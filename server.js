@@ -9,7 +9,7 @@ App.use(express.json());
 
 const connectDB = async() =>{
     try {
-        await database.sync({ force: true });
+        await database.sync({ alter: true });
     } catch (error) {
         console.log(error);
     }
