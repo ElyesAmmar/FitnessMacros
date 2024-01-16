@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { Sequelize } = require('sequelize');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -8,11 +9,15 @@ exports.register = async(req, res) =>{
 
         // Password validation regular expression
         const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
-
         // Check if the password is in correct form
-        if (!passwordRegex.test(req.body.password)){
+        if (!passwordRegex.test(request.password)){
             return res.status(400).send({ msg: 'Password must be at least 8 characters long and include both letters and numbers.' });
         } 
+
+        const validateEmail = Sequelize.Validator.isEmail(request.email);
+        if (!validateEmail) {
+            return res.status(400).send({ msg: "Invalid email address" });
+        }
 
         const user = await User.create(request);
 
@@ -56,9 +61,15 @@ exports.login = async(req, res) => {
         res.status(500).send({msg:"User Login Failed"});
     }
 }
-exports.getUser = async(req, res) => {
-    res.status
+
+exports.update = async(req, res) => {
+    try {
+        const request = req.body
+    } catch (error) {
+        
+    }
 }
+
 exports.drop = async(req, res) => {
     try {
         await User.drop();
