@@ -35,11 +35,11 @@ const User = sequelize.define('User', {
     },
     weigth: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
     height: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
     goal: {
         type: DataTypes.STRING,

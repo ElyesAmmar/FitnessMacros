@@ -1,7 +1,8 @@
 const express = require("express");
 require("dotenv").config({path:"./config/.env"});
 const database = require("./config/db");
-const userRoutes = require('./routes/userRoute')
+const userRoute = require('./routes/userRoute');
+const macrosRoute = require('./routes/macrosRoute');
 
 const PORT =  process.env.PORT || 7011;
 const App = express();
@@ -16,7 +17,8 @@ const connectDB = async() =>{
 }
 connectDB();
 
-App.use('/api/users', userRoutes )
+App.use('/api/users', userRoute );
+App.use('/api/macros', macrosRoute );
 
 App.listen(PORT, (err)=>{
     if (err) {
