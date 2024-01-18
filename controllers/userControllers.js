@@ -18,7 +18,6 @@ exports.register = async(req, res) =>{
         if (!validateEmail) {
             return res.status(400).send({ msg: "Invalid email address" });
         }
-
         const user = await User.create(request);
 
         // sign user 
@@ -42,19 +41,16 @@ exports.login = async(req, res) => {
         if (!user) {
             return res.status(400).send({msg: "Please provide a valid email address and password. "});
         }
-
         const isMatch = await bcrypt.compare(request.Password, user.Password );
         if(!isMatch){
             return res.status(400).send({msg:'Please provide a valid email address and password. '})
         }
-
         const payload = {
             id: user.id
         }
         const token = await jwt.sign(payload, process.env.secretKey);
 
         return res.status(200).send({msg: "login user successfully", user, token});
-
 
     } catch (error) {
         console.log(error);
@@ -64,9 +60,30 @@ exports.login = async(req, res) => {
 
 exports.update = async(req, res) => {
     try {
+        const id = req.params.id
         const request = req.body
+        console.log(request);
+        let result = await User.update({...request}, {
+            where: {
+              id: id
+            }
+        });
+        return res.status(200).send({msg: "update user successfully"});
+
     } catch (error) {
-        
+        console.log(error);
+        res.status(500).send({msg: "Update user failed" });
+    }
+}
+
+exports.delete = async(req, res) => {
+    try {
+        let user = req.params.id
+        await User.destroy({where:{id : user}})
+        res.status(200).send({msg: "delete user successfully"})
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({msg: "Delete user failed"});
     }
 }
 

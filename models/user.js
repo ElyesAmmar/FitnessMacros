@@ -23,8 +23,32 @@ const User = sequelize.define('User', {
     is_admin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    gender: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    date_of_birth: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        defaultValue: "2000-07-10"
+    },
+    weigth: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    height: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    goal: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    activity: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
-    
 })
 
 // Hash the password before saving
