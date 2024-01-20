@@ -4,7 +4,8 @@ const sequelize = require("../config/db");
 const Macros = sequelize.define('Macros', {
     user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        unique: true    
     },
     calories: {
         type: DataTypes.INTEGER,
@@ -18,7 +19,7 @@ const Macros = sequelize.define('Macros', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    fats: {
+    fat: {
         type: DataTypes.INTEGER,
         allowNull: false
     }

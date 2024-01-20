@@ -37,7 +37,7 @@ const User = sequelize.define('User', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    height: {
+    heigth: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
