@@ -1,6 +1,6 @@
-const Macros = require("../models/macros");
+const Daily_Nutrition = require("../models/daily_nutrition");
 
-exports.post = async(req, res) => {
+exports.postNutrition = async(req, res) => {
     try {
         let user = req.body;
         
@@ -49,7 +49,7 @@ exports.post = async(req, res) => {
         let Protein = Math.round(TDEE * macrosNutrimentRatios.protein / 4);
         let Fat = Math.round(TDEE * macrosNutrimentRatios.fat / 9);
 
-        const macros = await Macros.create({user_id: user.id,calories: TDEE, carbohydrates: Carbohydrates, protein: Protein, fat: Fat});
+        const macros = await Daily_Nutrition.create({user_id: user.id,calories: TDEE, carbohydrates: Carbohydrates, protein: Protein, fat: Fat});
         
         return res.status(200).send({msg: "creations macros successfully", response: macros});
 
@@ -60,6 +60,16 @@ exports.post = async(req, res) => {
     }
 }
 
+exports.getNutrition = async(req, res) => {
+    try {
+        let user_id = req.params.id
+        let result = await Daily_Nutrition.findOne({ where: { user_id: user_id } });
+        return res.status(200).send({msg: "getting daily nutrition successfully", response: result});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ msg: 'Error on the server.'});
+    }
+}
 
 exports.drop = async(req, res) => {
     try {

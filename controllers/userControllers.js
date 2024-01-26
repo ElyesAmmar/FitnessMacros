@@ -37,11 +37,11 @@ exports.login = async(req, res) => {
     try {
         let request = req.body
 
-        const user = await User.findOne({ where: { email: request }});
+        const user = await User.findOne({ where: { email: request.email }});
         if (!user) {
             return res.status(400).send({msg: "Please provide a valid email address and password. "});
         }
-        const isMatch = await bcrypt.compare(request.Password, user.Password );
+        const isMatch = await bcrypt.compare(request.password, user.password );
         if(!isMatch){
             return res.status(400).send({msg:'Please provide a valid email address and password. '})
         }
@@ -62,7 +62,6 @@ exports.update = async(req, res) => {
     try {
         const id = req.params.id
         const request = req.body
-        console.log(request);
         let result = await User.update({...request}, {
             where: {
               id: id

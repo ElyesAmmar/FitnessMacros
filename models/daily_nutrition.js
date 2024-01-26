@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/db");
 
-const Macros = sequelize.define('Macros', {
+const Daily_Nutrition = sequelize.define('Daily_Nutrition', {
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -25,4 +25,4 @@ const Macros = sequelize.define('Macros', {
     }
 });
 
-module.exports = Macros;
+module.exports = Daily_Nutrition;
