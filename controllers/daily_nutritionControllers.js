@@ -49,9 +49,18 @@ exports.postNutrition = async(req, res) => {
         let Protein = Math.round(TDEE * macrosNutrimentRatios.protein / 4);
         let Fat = Math.round(TDEE * macrosNutrimentRatios.fat / 9);
 
-        const macros = await Daily_Nutrition.create({user_id: user.id,calories: TDEE, carbohydrates: Carbohydrates, protein: Protein, fat: Fat});
-        
-        return res.status(200).send({msg: "creations macros successfully", response: macros});
+        let existing = await Daily_Nutrition.findOne({ where : { user_id: user.id }});
+        if (!existing){
+            const macros = await Daily_Nutrition.create({user_id: user.id,calories: TDEE, carbohydrates: Carbohydrates, protein: Protein, fat: Fat});
+            return res.status(200).send({msg: "creations macros successfully", response: macros});
+        } else {
+            await Daily_Nutrition.update({user_id: user.id,calories: TDEE, carbohydrates: Carbohydrates, protein: Protein, fat: Fat},
+                { where : { 
+                    user_id: user.id 
+                }
+            });
+            return res.status(200).send({msg: "updating macros successfully"});
+        }
 
     } catch (error) {
         console.log(error);
