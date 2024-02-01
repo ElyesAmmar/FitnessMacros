@@ -80,6 +80,17 @@ exports.getNutrition = async(req, res) => {
     }
 }
 
+exports.deleteNutrition = async(req, res) => {
+    try {
+        let id = req.params.id
+        let result = await Daily_Nutrition.destroy({where: {user_id : id}});
+        return res.status(200).res({msg: "Daily Nutrition deleted"})
+    } catch (error) {
+        console.log(error);
+        return  res.status(500).send({ msg: 'Error on the server.'});
+    }
+}
+
 exports.drop = async(req, res) => {
     try {
         await Macros.drop();

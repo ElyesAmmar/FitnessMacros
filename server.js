@@ -3,6 +3,7 @@ require("dotenv").config({path:"./config/.env"});
 const database = require("./config/db");
 const userRoute = require('./routes/userRoute');
 const macrosRoute = require('./routes/daily_nutritionRoute');
+const foodRoute = require('./routes/food_nutritionRoute');
 
 const PORT =  process.env.PORT || 7011;
 const App = express();
@@ -19,6 +20,7 @@ connectDB();
 
 App.use('/api/users', userRoute );
 App.use('/api/daily_nutrition', macrosRoute );
+App.use('/api/food_nutrition', foodRoute);
 
 App.listen(PORT, (err)=>{
     if (err) {

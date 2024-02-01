@@ -13,10 +13,13 @@ exports.register = async(req, res) =>{
         if (!passwordRegex.test(request.password)){
             return res.status(400).send({ msg: 'Password must be at least 8 characters long and include both letters and numbers.' });
         } 
-
         const validateEmail = Sequelize.Validator.isEmail(request.email);
+        const existingEmail = await User.findOne({ where: { email: request.email }});
         if (!validateEmail) {
             return res.status(400).send({ msg: "Invalid email address" });
+        }
+        if (existingEmail) {
+            return res.status(400).send({ msg: "user already exists" });
         }
         const user = await User.create(request);
 

@@ -4,8 +4,7 @@ const sequelize = require("../config/db");
 const Daily_Nutrition = sequelize.define('Daily_Nutrition', {
     user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true    
+        allowNull: false  
     },
     calories: {
         type: DataTypes.INTEGER,
