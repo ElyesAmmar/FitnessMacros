@@ -1,0 +1,33 @@
+.navbar {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+}
+.title_navbar {
+    color: black;
+    font-size: 35px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+}
+.ul_navbar {
+    list-style-type: none;
+    overflow: hidden;
+    display: flex;
+    margin: 0;
+}
+
+.li_navbar a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    padding: 14px 19px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.li_navbar a:hover {
+    color: #aaaaaa;
+    text-decoration: underline;
+  }
