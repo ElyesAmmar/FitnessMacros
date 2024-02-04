@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import './navbar/navbar.css'
 
-function Example() {
+function Login() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -12,7 +11,7 @@ function Example() {
   return (
     <>
       <a href='#' onClick={handleShow}>
-        S'inscricre
+        Se connecter
       </a>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -32,4 +31,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default Login;

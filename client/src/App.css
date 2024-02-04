@@ -4,9 +4,108 @@ body {
     height: 5000px;
 }
 
-button {
-    color: #00a3e4;
+.primary_btn {
+    width: 150px;
+    height: 40px;
+    font-weight: 500;
+    padding: 4px 0;
+    color: white;
+    background-color: #228B22;
+    border: 1px solid #228B22;
+    border-radius: 10px;
 }
+.primary_outline_btn {
+    width: 150px;
+    height: 40px;
+    font-weight: 500;
+    padding: 4px 0;
+    color: #228B22;
+    background-color: white;
+    border: 1px solid #228B22;
+    border-radius: 10px;
+}
+.secondary_outline_btn {
+    width: 150px;
+    height: 40px;
+    font-weight: 500;
+    padding: 4px 0;
+    color: #808080;
+    background-color: white;
+    border: 1px solid #808080;
+    border-radius: 10px;
+}
+
+.primary_btn:hover {
+    background-color: #1a6d1a;
+    color: white;
+}
+
+.primary_outline_btn:hover {
+    background-color: #228B22;
+    color: white;
+}
+
+.secondary_outline_btn:hover {
+    background-color:  #808080;
+    color: white;
+}
+
+input [type="radios"] {
+    /* size: 100px; */
+    margin:  20px;
+
+}
+input[type="date"] {
+    border: 1px solid #DCDCDC;
+    width: 300px;
+    height: 50px; 
+    border-radius: 5px;
+    letter-spacing: 5px;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+input[type="text"]  {
+    border: 1px solid #DCDCDC;
+    width: 300px;
+    height: 50px; 
+    border-radius: 5px;
+    padding: 4px 5px;
+    
+}
+input[type="number"] {
+    border: 1px solid #DCDCDC;
+    width: 150px;
+    height: 50px; 
+    border-radius: 5px;
+    padding: 4px 5px;
+}
+input:focus {
+    box-shadow: 0 0 5px #B0C4DE;
+    outline: none;
+}
+
+
+/* input:required + span:after {
+    content: "Required";
+  }
+input:invalid + label {
+    color: red;
+} */
+
+/* .medium_input {
+    border: 1px solid rgb(187, 187, 187);
+    width: 300px;
+    height: 50px; 
+    border-radius: 5px;
+    padding: 4px 5px;
+}
+.small_input {
+    border: 1px solid rgb(187, 187, 187);
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 4px 5px;
+} */
 
 /* .modal_container {
     display: flex;

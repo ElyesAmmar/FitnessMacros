@@ -2,7 +2,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar/navbar';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Example from './components/modal';
 import Home from './pages/home'
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
         <Navbar />
         <Home />
         <Routes>
-          <Route path='/example'element={<Example  />} />
+          {/* <Route path='/example'element={} /> */}
         </Routes>
       </BrowserRouter>
     </div>

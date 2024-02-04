@@ -1,13 +1,14 @@
-import './navbar.css'
-import {Link, useNavigate} from 'react-router-dom'
-import Example from '../modal';
+import './navbar.css';
+import {Link, useNavigate} from 'react-router-dom';
+import Register from '../user/registerModal';
+import Login from '../user/loginUser';
 
 function Navbar() {
   return (
     <div>
         <nav className='navbar'>
             <ul className='ul_navbar'>
-                <h1 className='title_navbar' style={{marginRight:'70px'}}>FitnessLife</h1>
+                <h1 className='title_navbar'>FitnessLife</h1>
                 <li className='li_navbar'>
                     <Link to=''>Aliments</Link>
                 </li>
@@ -17,10 +18,10 @@ function Navbar() {
             </ul>
             <ul className='ul_navbar'>
                 <li className='li_navbar'>
-                    <Link to=''>Se connecter</Link>
+                    <Login />
                 </li>
                 <li className='li_navbar'>
-                    <Example />
+                    <Register />
                 </li>
             </ul>
         </nav>
