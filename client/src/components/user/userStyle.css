@@ -1,0 +1,81 @@
+.form_control {
+    /* margin-bottom: 30px; */
+    /* width: 400px; */
+    /* padding: 10px; */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form_groups {
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    /* width: 400px; */
+    width: 100%;
+    padding: 10px;
+}
+
+.weight_height_input{
+    display: flex;
+    justify-content: space-between;
+    width: 88%;
+}
+/* .register_goal {
+    width: 100%;
+} */
+.big_buttons {
+    width: 90%;
+    margin: 10px 20px;
+    padding: 15px auto;
+    font-size: large;
+    border: 2px solid #DCDCDC;
+    background-color: white;
+    height: 70px;
+    border-radius: 8px;
+}
+
+.big_buttons:focus {
+    outline: none;
+    border-color: #228B22;
+    color: #228B22;
+    font-weight: 600;
+    border-color: #228B22;
+}
+
+.big_buttons h6 {
+    text-align: center;
+    margin: 5px auto;
+    font-weight: 450;
+    font-size: large;
+}
+.big_buttons:focus h6 {
+    font-weight: 600;
+    color: #228B22;
+}
+
+.physique_input {
+    position: relative;
+}
+
+.physique_input span {
+    position: absolute;
+    top: 50%;
+    right: 18px; 
+    transform: translateY(-50%);
+    color: gray;
+    pointer-events: none;
+}
+.password_input {
+    position: relative; 
+}
+.password_input button {
+    position: absolute;
+    top: 40%;
+    right: 40px; 
+    transform: translateY(-50%);
+    color: gray;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
