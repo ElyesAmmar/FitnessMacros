@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState, useUpdateEffect } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
 import './userStyle.css'
 import Modal from 'react-bootstrap/Modal';
 import UserInformation from './body';
 import Goal from './goal';
 import Activity from './activty';
 import User from './email_password';
+import { validateUser } from '../../JS/actions/user'
 
 
 function Register() {
+
+  const dispatch = useDispatch();
+  const errors = useSelector((state)=> state.userReducer.errors);
+  const user = useSelector((state)=> state.userReducer.user);
   const [show, setShow] = useState(false);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(-1);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+ 
   const handleNext = () => {
-    setPage(page+1)
+    dispatch(validateUser(user,page))
+      // if (Object.values(errors).length === 0) {
+      //   setPage(page+1);
+      // }
   }
+  useEffect(()=> {
+    if (Object.values(errors).length === 0) {
+      setPage(page+1);
+    }
+  },[errors]);
+  
   const handlePrecedent = () => {
     setPage(page-1)
   }

@@ -1,0 +1,3 @@
+export const ADD_USER_DATA = 'ADD_USER_DATA';
+export const VALIDATE_USER =  'VALIDATE_USER';
+export const USER_REGISTER = 'USER_REGISTER';

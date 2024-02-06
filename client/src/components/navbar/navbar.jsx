@@ -10,10 +10,13 @@ function Navbar() {
             <ul className='ul_navbar'>
                 <h1 className='title_navbar'>FitnessLife</h1>
                 <li className='li_navbar'>
+                    <Link to=''>Accueil</Link>
+                </li>
+                <li className='li_navbar'>
                     <Link to=''>Aliments</Link>
                 </li>
                 <li className='li_navbar'>
-                    <Link to=''>Fonctionnalités</Link>
+                    <Link to=''>Contact</Link>
                 </li>
             </ul>
             <ul className='ul_navbar'>
