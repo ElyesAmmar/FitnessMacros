@@ -8,6 +8,13 @@ const foodRoute = require('./routes/food_nutritionRoute');
 const PORT =  process.env.PORT || 7011;
 const App = express();
 App.use(express.json());
+// Add middleware to set the CORS headers
+App.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-auth-token');
+    next();
+  });
+
 
 const connectDB = async() =>{
     try {

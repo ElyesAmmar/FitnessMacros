@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 exports.register = async(req, res) =>{
     try {
         let request = req.body;
-
         // Password validation regular expression
         const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
         // Check if the password is in correct form

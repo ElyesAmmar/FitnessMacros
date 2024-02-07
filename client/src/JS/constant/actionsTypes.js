@@ -1,3 +1,6 @@
 export const ADD_USER_DATA = 'ADD_USER_DATA';
-export const VALIDATE_USER =  'VALIDATE_USER';
 export const USER_REGISTER = 'USER_REGISTER';
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_GET_AUTH = 'USER_GET_AUTH';
+
+export const GET_DAILY_NUTRITION = 'GET_DAILY_NUTRITION';

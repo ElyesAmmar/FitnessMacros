@@ -1,13 +1,8 @@
-import { useEffect, useState, useRef} from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './userStyle.css'
 import Modal from 'react-bootstrap/Modal';
-import UserInformation from './body';
-import Goal from './goal';
-import Activity from './activty';
-import User from './email_password';
-import { validateUser, addUserData } from '../../JS/actions/user';
-
+import { register } from '../../JS/actions/user';
 
 function Register() {
 
@@ -74,15 +69,16 @@ function Register() {
         setPage(page + 1);
         setErrors({});
       } else {
+        dispatch(register({
+          ...user,
+          weight: parseInt(user.weight),
+          height: parseInt(user.height)
+        }));
         handleClose();
       }
     }
     
   }
-  
-  console.log(page);
-  console.log('errors',errors);
-  console.log('user',user);
   const handlePrecedent = () => {
     setPage(page-1)
   }

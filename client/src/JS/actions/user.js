@@ -1,40 +1,40 @@
-import { ADD_USER_DATA, VALIDATE_USER, USER_REGISTER } from '../constant/actionsTypes'
+import { ADD_USER_DATA, USER_REGISTER, USER_GET_AUTH } from '../constant/actionsTypes'
+import axios from 'axios'
 
-
-export const addUserData = (Data) =>{
-    console.log('user',Data);
-    return {
-        type: ADD_USER_DATA,
-        payload: Data
+export const register = (user) => async(dispatch) => {
+    try {
+        console.log('user from reducer', user);
+        const userRes = await axios.post('/api/users/register', user);
+        console.log(userRes);
+        const userNutritionRes = await axios.post('/api/daily_nutrition/post', userRes.data.user);
+        
+        dispatch({
+            type: USER_REGISTER,
+            payload: {user: userRes.data, userNutrition: userNutritionRes.data}
+        });
+    } catch (error) {
+        console.log(error);
+        alert(error.response.data.msg);
     }
 }
 
-export const validateUser = (data,page) => {
-    console.log('from validator',data);
-    const errors = {}
-    if (page === 1 & !data.weight ||data.weight < 20 || data.weight > 500) {
-        errors.weight = "Veuillez saisir un poids valide entre 20 et 500";
-    }
-    if (page === 1 & !data.height || data.height < 66 || data.height > 241) {
-        errors.height = "Veuillez saisir un hauteur valide entre 66 & 241";
-    } 
-    if (page === 1 & !data.username) {
-        errors.username = "Veuillez saisir un prénom valide.";
-    }
-    if (page === 1 & !data.gender) {
-        errors.gender = "Sélectionnez le sexe.";
-    } 
-    if (page === 1 & !data.date_of_birth) {
-        errors.date_of_birth = "Veuillez indiquer une date de naissance valide (dd/mm/yyyy).";
-    } 
-    if (page === 2 & !data.goal) {{
-        errors.goal= "Veuillez selectionner un choix";
-    }}
-    console.log('errors',errors);
-    return {
-        type: VALIDATE_USER,
-        payload: errors
-    }
+export const getUser = () => async(dispatch) =>{
+    try {
+        const config = {
+            headers : {
+                "x-auth-token": localStorage.getItem('token')
+            }
+        }
+        console.log(config);
+        const user  = await axios.get('http://localhost:7001/api/users/', config);
+        dispatch({
+            type: USER_GET_AUTH,
+            payload: user.data
+        })
 
+    } catch (error) {
+        console.log(error);
+        alert(error.response.data.msg);
+    }
 }
     

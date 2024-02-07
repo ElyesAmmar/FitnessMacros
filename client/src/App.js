@@ -1,15 +1,31 @@
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar/navbar';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from './pages/home'
+import Home from './pages/home';
+import { getUser } from './JS/actions/user'
+import User from './pages/user';
 
 function App() {
+
+  const dispatch = useDispatch();
+  const user  = useSelector((state)=> state.userReducer.user);
+  const isAuth  = useSelector((state)=> state.userReducer.isAuth);
+  console.log(isAuth);
+  
+  useEffect(()=> {
+    dispatch(getUser());
+  },[]);
+
+  console.log('user from app', user);
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Home />
+        {isAuth && <User />}
         <Routes>
           {/* <Route path='/example'element={} /> */}
         </Routes>

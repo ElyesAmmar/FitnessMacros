@@ -35,9 +35,9 @@ exports.postNutrition = async(req, res) => {
             }
         }
         if (user.gender === "male") {
-            BMR = 88.362 + (13.397 * user.weigth) + (4.799 * user.heigth) - (5.677 * age);
+            BMR = 88.362 + (13.397 * user.weight) + (4.799 * user.height) - (5.677 * age);
         } else {
-            BMR = 447.593 + (9.247 * user.weigth) + (3.098 * user.heigth) - (4.330 * age);
+            BMR = 447.593 + (9.247 * user.weight) + (3.098 * user.height) - (4.330 * age);
         }
         
         let TDEE = BMR * activtyFactor + goalCalories;

@@ -5,6 +5,7 @@ const User = require('../models/user');
 const isAuth = async(req, res, next) => {
     try {
         const token = req.headers['x-auth-token'];
+        console.log(token);
         if (!token) {
             return res.status(400).send("No token, authorization denied");
         }

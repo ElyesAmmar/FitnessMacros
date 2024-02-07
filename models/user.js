@@ -28,11 +28,11 @@ const User = sequelize.define('User', {
         allowNull: false,
         defaultValue: "2000-07-10"
     },
-    weigth: {
+    weight: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    heigth: {
+    height: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
