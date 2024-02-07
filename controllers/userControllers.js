@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const { Sequelize } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -40,7 +40,12 @@ exports.login = async(req, res) => {
     try {
         let request = req.body
 
-        const user = await User.findOne({ where: { email: request.email }});
+        const user = await User.findOne({ where: { 
+            [Op.or]: [
+                { email: request.email },
+                { username: request.username }
+            ]
+        }});
         if (!user) {
             return res.status(400).send({msg: "Please provide a valid email address and password. "});
         }
