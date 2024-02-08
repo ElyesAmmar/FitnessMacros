@@ -5,7 +5,6 @@ const User = require('../models/user');
 const isAuth = async(req, res, next) => {
     try {
         const token = req.headers['x-auth-token'];
-        console.log(token);
         if (!token) {
             return res.status(400).send("No token, authorization denied");
         }
@@ -14,7 +13,8 @@ const isAuth = async(req, res, next) => {
         if (!user) {
             return res.status(400).send({msg:'User not found'});
         }
-        req.user = user;
+        console.log(user.dataValues);
+        req.user = user.dataValues;
         next();
     } catch (error) {
         console.log(error)

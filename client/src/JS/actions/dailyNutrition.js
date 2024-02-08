@@ -4,10 +4,10 @@ import axios from 'axios'
 
 export const getUserNutrition = (id) => async(dispatch) => {
     try {
-        const  response = await axios.get(`http://localhost:7001/api/daily_nutrition/get/${id}`);
+        const  nutrition = await axios.get(`http://localhost:7001/api/daily_nutrition/get/${id}`);
         dispatch({
             type: GET_DAILY_NUTRITION,
-            payload: response.data.response
+            payload: nutrition.data.response
         })
     } catch (error) {
         console.log(error);

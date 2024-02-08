@@ -37,8 +37,7 @@ exports.register = async(req, res) =>{
 
 exports.login = async(req, res) => {
     try {
-        let request = req.body
-
+        let request = req.body;
         const user = await User.findOne({ where: { 
             [Op.or]: [
                 { email: request.email },

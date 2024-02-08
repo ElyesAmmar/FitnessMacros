@@ -72,6 +72,7 @@ exports.postNutrition = async(req, res) => {
 exports.getNutrition = async(req, res) => {
     try {
         let user_id = req.params.id
+        console.log('this is id',user_id);
         let result = await Daily_Nutrition.findOne({ where: { user_id: user_id } });
         return res.status(200).send({msg: "getting daily nutrition successfully", response: result});
     } catch (error) {

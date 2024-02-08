@@ -74,6 +74,7 @@ function Register() {
           weight: parseInt(user.weight),
           height: parseInt(user.height)
         }));
+        setUser({});
         handleClose();
       }
     }
@@ -90,7 +91,7 @@ function Register() {
         <Modal.Header closeButton>
           <Modal.Title>S'enregistrer</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={{padding:'20px 20px'}}>
+        <Modal.Body>
           {/* {page === 0 && <UserInformation />}
           {page === 1 && <Goal />}
           {page === 2 && <Activity />} 

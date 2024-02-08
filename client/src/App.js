@@ -24,10 +24,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <Home />
-        {isAuth && <User />}
         <Routes>
-          {/* <Route path='/example'element={} /> */}
+          <Route path='/accueil' element={<Home />}></Route>
+          <Route path='/utilisateur'element={isAuth && <User />} />
         </Routes>
       </BrowserRouter>
     </div>

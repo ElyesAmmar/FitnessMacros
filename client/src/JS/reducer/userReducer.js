@@ -1,4 +1,4 @@
-import { USER_REGISTER, ADD_USER_DATA, USER_GET_AUTH } from '../constant/actionsTypes'
+import { USER_REGISTER, USER_LOGIN, USER_GET_AUTH } from '../constant/actionsTypes'
 
 const initialeState = {
     isLoading : false,
@@ -13,13 +13,14 @@ const initialeState = {
 export const userReducer = (state= initialeState, {type, payload})=>{
     
     switch (type) {
-        case ADD_USER_DATA:
-            return {...state, user:{...state.user, ...payload}};
         case USER_REGISTER:
-            localStorage.setItem("token", payload.user.token)
-            return {...state, user: payload.user.user, isAuth: true, dailyNutrition: payload.userNutrition.response};
+            localStorage.setItem("token", payload.user.token);
+            return {...state, user: payload, isAuth: true};
+        case USER_LOGIN:
+            localStorage.setItem("token", payload.token);
+            return {...state, user: payload, isAuth: true};
         case USER_GET_AUTH:
-            return {...state, user: payload.user, isAuth: true};
+            return {...state, user: payload, isAuth: true};
         default:
             return state;
     }
