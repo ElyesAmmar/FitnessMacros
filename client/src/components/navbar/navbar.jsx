@@ -1,16 +1,19 @@
 import './navbar.css';
+import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import Register from '../user/registerModal';
 import Login from '../user/loginUser';
-import { UseSelector, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOut } from '../../JS/actions/user';
 
 function Navbar() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const user = useSelector((state)=> state.userReducer.user);
     const isAuth = useSelector((state)=> state.userReducer.isAuth);
-    const logOut = () => {
-        localStorage.removeItem("token")
-
+    const logOutUser = () => {
+        dispatch(logOut());
+        navigate('/accueil');
     }
   return (
     <div>
@@ -39,7 +42,7 @@ function Navbar() {
                 <li className='li_navbar'>
                     <div>
                         <Link to='/utilisateur'>Bonjour {user.username}</Link>
-                        <button onClick={logOut}>Se deconnecter</button>
+                        <button onClick={logOutUser}>Se deconnecter</button>
                     </div>
                 </li>
             </ul>}

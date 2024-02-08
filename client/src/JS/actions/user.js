@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_GET_AUTH } from '../constant/actionsTypes'
+import { USER_LOGIN, USER_REGISTER, USER_GET_AUTH, USER_LOGOUT } from '../constant/actionsTypes'
 import axios from 'axios'
 
 export const register = (user) => async(dispatch) => {
@@ -7,10 +7,9 @@ export const register = (user) => async(dispatch) => {
         const userRes = await axios.post('http://localhost:7001/api/users/register', user);
         console.log(userRes);
         const userNutritionRes = await axios.post('http://localhost:7001/api/daily_nutrition/post', userRes.data.user);
-        
         dispatch({
             type: USER_REGISTER,
-            payload: userRes.data.user
+            payload: userRes.data
         });
     } catch (error) {
         console.log(error);
@@ -22,7 +21,7 @@ export const login = (user) => async(dispatch) => {
         const userRes = await axios.post('http://localhost:7001/api/users/login', user);
         dispatch({
             type: USER_LOGIN,
-            payload: userRes.data.user
+            payload: userRes.data
         })
     } catch (error) {
         console.log(error);
@@ -36,15 +35,22 @@ export const getUser = () => async(dispatch) =>{
                 "x-auth-token": localStorage.getItem('token')
             }
         }
-        console.log(config);
-        const user  = await axios.get('http://localhost:7001/api/users/', config);
-        dispatch({
-            type: USER_GET_AUTH,
-            payload: user.data.response
-        })
-
+        if (config.headers["x-auth-token"]) {
+            const user  = await axios.get('http://localhost:7001/api/users/', config);
+            dispatch({
+                type: USER_GET_AUTH,
+                payload: user.data.response
+            })
+        }
+        
     } catch (error) {
         console.log(error);
         alert(error.response.data);
     }
+}
+
+export const logOut = () => {
+    return ({
+        type: USER_LOGOUT
+    })
 }

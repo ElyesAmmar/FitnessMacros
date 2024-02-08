@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './userStyle.css'
 import Modal from 'react-bootstrap/Modal';
 import { register } from '../../JS/actions/user';
@@ -7,6 +8,7 @@ import { register } from '../../JS/actions/user';
 function Register() {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [page, setPage] = useState(1);
   const [errors, setErrors] = useState({});
@@ -76,6 +78,7 @@ function Register() {
         }));
         setUser({});
         handleClose();
+        navigate('/utilisateur');
       }
     }
     

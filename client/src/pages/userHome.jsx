@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserNutrition } from '../JS/actions/dailyNutrition';
 
-function User() {
+function UserHome() {
   const dispatch = useDispatch()
     const user  = useSelector((state)=> state.userReducer.user);
 
@@ -22,4 +22,4 @@ function User() {
   );
 }
 
-export default User;
+export default UserHome;

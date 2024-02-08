@@ -2,5 +2,6 @@ export const ADD_USER_DATA = 'ADD_USER_DATA';
 export const USER_REGISTER = 'USER_REGISTER';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_GET_AUTH = 'USER_GET_AUTH';
+export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const GET_DAILY_NUTRITION = 'GET_DAILY_NUTRITION';

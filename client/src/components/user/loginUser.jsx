@@ -26,8 +26,7 @@ function Login() {
   }
   const signIn = () => {
     dispatch(login(user));
-    navigate('/utilisateur')
-
+    navigate('/utilisateur');
   }
  
   return (

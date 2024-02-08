@@ -13,7 +13,6 @@ const isAuth = async(req, res, next) => {
         if (!user) {
             return res.status(400).send({msg:'User not found'});
         }
-        console.log(user.dataValues);
         req.user = user.dataValues;
         next();
     } catch (error) {
