@@ -30,6 +30,8 @@ function Register() {
     const goal = e.target.getAttribute('value');
     setUser({...user, goal: goal});
 }
+const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
   const handleNext = () => {
     const error = {};
     if (page === 1 & !user.weight || user.weight < 20 || user.weight > 500) {
@@ -47,19 +49,19 @@ function Register() {
     if (page === 1 & !user.date_of_birth) {
         error.date_of_birth = "Veuillez indiquer une date de naissance valide (dd/mm/yyyy).";
     }
-    if (page === 2 & user.goal === '') {
+    if (page === 2 & !user.goal) {
         error.goal = "Veuillez selectionner un choix";
     }
-    if (page === 3 & user.activity === '') {
+    if (page === 3 & !user.activity) {
       error.activity = "Veuillez selectionner un choix";
     }
-    if (page === 4 & !user.email) {
+    if (page === 4 & !user.email || !emailRegex.test(user.email)) {
       error.email = 'Veuillez saisir une adresse mail valide.';
-    }
+    } 
     if (page === 4 & !user.password ) {
       error.password = 'Veuillez saisir un mot de passe valide.';
     }
-    if (page === 4 & user.password) {
+    else if (user.password) {
       if (user.password.length < 10) {
         error.password = 'Le mot de passe doit comporter au moins 10 caractères.';
       }
@@ -70,15 +72,16 @@ function Register() {
       if (page < 4) {
         setPage(page + 1);
         setErrors({});
-      } else {
+      } else if (page === 4) {
         dispatch(register({
           ...user,
           weight: parseInt(user.weight),
           height: parseInt(user.height)
         }));
         setUser({});
+        setPage(1)
         handleClose();
-        navigate('/utilisateur');
+        navigate('/dailynutrition');
       }
     }
     
@@ -95,10 +98,6 @@ function Register() {
           <Modal.Title>S'enregistrer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* {page === 0 && <UserInformation />}
-          {page === 1 && <Goal />}
-          {page === 2 && <Activity />} 
-          {page === 3 && <User />} */}
           {page === 1 && 
             <form className='form_groups'>
               <h5>Veuillez saisisez votre Prenom et Nom</h5>

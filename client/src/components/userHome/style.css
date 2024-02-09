@@ -1,0 +1,18 @@
+.daily-nutrition_body {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: 	#f0fff0;
+}
+
+.daily-nutrition_content {
+    margin: 20px auto 0px;
+    width: 90%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    height: 280px;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #B0C4DE;
+}
