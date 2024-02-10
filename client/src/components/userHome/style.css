@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    background-color: 	#f0fff0;
+    background-color: #EBECE4;
 }
 
 .daily-nutrition_content {
@@ -12,7 +12,73 @@
     background-color: white;
     display: flex;
     justify-content: space-around;
-    height: 280px;
     border-radius: 15px;
     box-shadow: 0 0 8px #B0C4DE;
+    padding: 20px;
 }
+.section1 {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calories_bar {
+    width: 60%;
+    color: #228B22;
+}
+.section2 {
+    height: 40%;
+    width: 35%;
+}
+
+.macros_nutrions h6 {
+    margin: 5px 11px 5px 11px;
+}
+.macros_nutrions p {
+    margin: 5px;
+    width: 20%;
+    font-weight: bold;
+}
+.macros_nutrions div {
+    display: flex;
+    width: 100%;
+}
+.macros_nutrions p {
+    width: 100%;
+}
+/* For screens between 600px and 900px */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .daily-nutrition_body {
+      width: 90%;
+    }
+  }
+@media screen and (max-width: 1300px) {
+    .daily-nutrition_body {
+      width: 100%;
+    }
+}
+ @media screen and (max-width: 600px) {
+    .daily-nutrition_body {
+      width: 100%;
+}
+    .daily-nutrition_content {
+        display: flex;
+        flex-direction: column; 
+}
+    .section1 {
+        width: 50%;
+        margin: 0 auto;
+    }
+    .section2 {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .macros_nutrions {
+        width: 30%;
+    }
+    .macros_nutrions div {
+        display: flex;
+        flex-direction: column;
+    }   
+  }

@@ -20,7 +20,7 @@ function Navbar() {
     <div>
         <nav className='navbar'>
             <ul className='ul_navbar'>
-                <h1 className='title_navbar' style={{borderBottom: '3px solid #228B22'}} onClick={()=> navigate('/dailynutrition')}>FitnessLife</h1>
+                <h1 className='title_navbar' style={{borderBottom: '3px solid #228B22'}} onClick={()=> navigate('/')}>FitnessLife</h1>
                 <li className='li_navbar'>
                     <Link to=''>Aliments</Link>
                 </li>
