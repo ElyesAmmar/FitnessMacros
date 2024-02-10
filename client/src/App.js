@@ -8,6 +8,7 @@ import Home from './pages/home';
 import { getUser } from './JS/actions/user'
 import UserHome from './pages/userHome';
 import DailyNutrition from './components/userHome/daily_nutrition';
+import FoodNutrition from './pages/foodNutrition';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Navbar />
         <Routes>
         {/* <Route path='/' element={<Home />}></Route> */}
+          <Route path='/food' element={<FoodNutrition />} />
           <Route path='/' element={isAuth? <UserHome />  : <Home />}>
             <Route path='/dailynutrition' element={isAuth? <DailyNutrition /> : <Navigate to='/' />} />
           </Route>

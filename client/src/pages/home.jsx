@@ -2,7 +2,7 @@
 
 function Home() {
   return (
-    <div className='modal_container'>
+    <div className='pages_body'>
        <h1>home page</h1>
     </div>
   );

@@ -55,9 +55,9 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
     if (page === 3 & !user.activity) {
       error.activity = "Veuillez selectionner un choix";
     }
-    if (page === 4 & !user.email || !emailRegex.test(user.email)) {
+    if (page === 4 & !user.email || page === 4 & emailRegex.test(user.email) === false) {
       error.email = 'Veuillez saisir une adresse mail valide.';
-    } 
+    }
     if (page === 4 & !user.password ) {
       error.password = 'Veuillez saisir un mot de passe valide.';
     }
@@ -214,8 +214,8 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
           }
         </Modal.Body>
         <Modal.Footer>
-          {page === 0 && <button className='secondary_outline_btn' onClick={handleClose} >Annuler</button>}
-          {page !== 0 && <button className='secondary_outline_btn' onClick={()=>{handlePrecedent();setErrors({})}}>Précedent</button>}
+          {page === 1 && <button className='secondary_outline_btn' onClick={handleClose} >Annuler</button>}
+          {page !== 1 && <button className='secondary_outline_btn' onClick={()=>{handlePrecedent();setErrors({})}}>Précedent</button>}
           {page === 4 && <button className='primary_btn' onClick={handleNext}>Créer</button>}
           {page !== 4 && <button className='primary_btn' onClick={handleNext}>Next</button>}
         </Modal.Footer>

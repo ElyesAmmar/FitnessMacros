@@ -1,4 +1,4 @@
-import './style.css';
+import './daily_nutrition_style.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useSelector } from 'react-redux';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';

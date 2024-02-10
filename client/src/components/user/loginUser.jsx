@@ -42,9 +42,9 @@ function Login() {
          <form className='form_groups' style={{textAlign: 'center'}} onSubmit={signIn} >
             <h5 style={{textAlign: 'center'}}>Accés membres</h5>
             <div className='form_control'>
-              <input className='email_input' type="email" name="email" value={user.email} placeholder='Adresse e-mail' onChange={handleInput}></input>
+              <input className='email_input' type="email" name="email" value={user.email} placeholder='Adresse e-mail' onChange={handleInput}/>
               <div className='password_input' >
-                <input type={visible ? 'email' : 'password'} name="password" placeholder='Créer un mot de passe' onChange={handleInput}></input>
+                <input type={visible ? 'email' : 'password'} name="password" placeholder='Créer un mot de passe' onChange={handleInput}/>
                 <button
                   type="button"
                   className="toggle-password"
