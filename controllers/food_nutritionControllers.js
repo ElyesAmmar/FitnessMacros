@@ -9,17 +9,17 @@ exports.post = async(req, res) => {
         .pipe(csv())
         .on('data', async(data) => {
             try {
-                if (data.protein === "trace" || data.protein === "") {
+                if (data.protein === "-") {
                     data.protein = 0;
                 } else {
                     data.protein =  parseFloat(data.protein.replace(/[^\d.]/g, ''), 10);
                 }
-                if (data.carbohydrates === "trace" || data.carbohydrates === "") {
+                if (data.carbohydrates === "-") {
                     data.carbohydrates = 0;
                 } else {
                     data.carbohydrates =  parseFloat(data.carbohydrates.replace(/[^\d.]/g, ''), 10);
                 }
-                if (data.fat === "trace" || data.fat === "") {
+                if (data.fat === "-") {
                     data.fat = 0;
                 } else {
                     data.fat =  parseFloat(data.fat.replace(/[^\d.]/g, ''), 10);

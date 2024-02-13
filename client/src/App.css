@@ -10,7 +10,7 @@ body {
     width: 150px;
     height: 40px;
     font-weight: 500;
-    padding: 4px 0;
+    /* padding: 4px 0; */
     color: white;
     background-color: #228B22;
     border: 1px solid #228B22;
@@ -20,7 +20,7 @@ body {
     width: 150px;
     height: 40px;
     font-weight: 500;
-    padding: 4px 0;
+    /* padding: 4px 0; */
     color: #228B22;
     background-color: white;
     border: 1px solid #228B22;
@@ -30,7 +30,7 @@ body {
     width: 150px;
     height: 40px;
     font-weight: 500;
-    padding: 4px 0;
+    /* padding: 4px 0; */
     color: #808080;
     background-color: white;
     border: 1px solid #808080;
@@ -98,6 +98,9 @@ input[type="email"], input[type="password"] {
 input:focus {
     box-shadow: 0 0 5px #B0C4DE;
     outline: none;
+}
+input[type="button"]:focus {
+    box-shadow:none;
 }
 
 

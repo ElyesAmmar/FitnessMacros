@@ -1,4 +1,4 @@
-import './style.css'
+import './userHomeStyle.css'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserNutrition } from '../JS/actions/dailyNutrition';

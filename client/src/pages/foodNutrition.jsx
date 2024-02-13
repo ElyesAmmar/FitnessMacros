@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import './foodNutritionStyle.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 function FoodNutrition() {
+    const [showPortions, setShowPortions] = useState(false);
+
     return (
       <div className='food_body'>
         <div className="food_content">
@@ -23,17 +26,32 @@ function FoodNutrition() {
                 
             </div>  
             <div className='food_section'>
-                    <div>
-                        <labe>Portions:</labe>
-                        <input type='number'/>
+                    <div className='serving_size'>
+                        <input type='number' style={{width: '20%'}}/>
+                        <div className='selected_list'>
+                            <div className='selected_button' onClick={()=> showPortions ?  setShowPortions(false) : setShowPortions(true)}>
+                                <input type='button' value={'elyes'} className='selected_button_title'/>
+                                <div className='selected_button_icon'>
+                                    <svg style={{width: '24px', height: '24px'}} class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
+                                    </svg>
+                                </div> 
+                            </div>
+                            {showPortions && <div className='selected_content'>
+                                <div type='button' className='selected_content_button'>Portion</div>
+                                <div type='button' className='selected_content_button'>gramme</div>
+                                <div type='button' className='selected_content_button'>Portion normale 100g</div>
+                            </div>}
+                        </div>
                     </div>
                 <div className='nutrition_fact'>
-                    <div>
-                        <h5>INFORMATIONS NUTRITIONNELLES</h5>
+                    
+                    <div className='head_nutrition_fact'>
+                        <h6 className='title_nutrition_fact'>Aliments: poulet</h6>
+                        <p>valeur pour : 100g</p>
                     </div>
                     <div>
-                        <h6 className='title_nutrition_fact'>poulet</h6>
-                        <p>valeur pour : 100g</p>
+                        <h5>INFORMATIONS NUTRITIONNELLES</h5>
                     </div>
                     <div className='macronutrients_pourcentage'>
                         <div className='calories_bar'>
@@ -84,17 +102,12 @@ function FoodNutrition() {
                     <div className='primary_nutrition_fact'>
                         <p>Cholestérol</p>
                         <p >34kcal</p>
+                    </div> <div className='primary_nutrition_fact'>
+                        <p>Sodium</p>
+                        <p>34kcal</p>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Autre</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Graisses insaturées</p>
-                        <p>34kcal</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Graisses insaturées</p>
-                        <p>34kcal</p>
                     </div>
                     <div className='secondary_nutrition_fact'>
                         <p>Graisses insaturées</p>

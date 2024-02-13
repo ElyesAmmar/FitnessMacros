@@ -11,11 +11,11 @@ const Food_Nutrition = sequelize.define('Food_Nutrition', {
         allowNull: false
     },
     serving_size: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
-    portion: {
-        type: DataTypes.INTEGER,
+    serving_size_fr: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     calories: {
