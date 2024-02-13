@@ -1,27 +1,59 @@
 import { useState } from 'react';
-import './foodNutritionStyle.css';
+import { useDispatch, useSelector } from 'react-redux';
+import './foodStyle.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Spinner from 'react-bootstrap/Spinner';
+import { getFood } from '../JS/actions/food';
 
-function FoodNutrition() {
+function Food() {
+    const dispatch = useDispatch();
     const [showPortions, setShowPortions] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const food = useSelector((state)=> state.foodReducer.food);
+    console.log(food);
+
+    const handleInput = (e) => {
+        console.log(e.target.value);
+        setIsLoading(true);
+        if (e.target.value !== '') {
+            dispatch(getFood(e.target.value));
+        } 
+        setIsLoading(false);
+    }
 
     return (
       <div className='food_body'>
         <div className="food_content">
             <div className='food_section'>
-                <h4>Infos nutritionnelles de l'aliment</h4>
+                <div>
+                    <h4>Infos nutritionnelles de l'aliment</h4>
+                    
+                </div>
+                
                 <div className='dropdown_container'>
                     <div className='search_input'>
-                        <input style={{width: '100%'}} type='text' placeholder='Rechercher un aliment...'/>
-                        {/* <img src='./search-line-icon.svg'/> */}
+                        <div className='search_input_icons'>
+                            <svg  style={{width: '35px', height: '35px'}} class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <input style={{width: '100%', paddingLeft: '50px'}} type='text' placeholder='Rechercher un aliment...' onChange={handleInput}/>
+                        {isLoading &&
+                        <div className='search_input_spinner'>
+                            <Spinner animation="border" variant="success" />
+                        </div>
+                        }
                     </div>
-                    <div className='list_foods'>
-                        <div className='element_food'>elyes</div>
-                        <div className='element_food'>elyes</div>
-                        <div className='element_food'>elyes</div>
-                        <div className='element_food'>elyes</div>
-                    </div>
+                    {food.map((el)=>
+                        <div key={el.id} className='list_foods'>
+                            <div className='element_food'>
+                                <h6 style={{margin:'2px'}}>{el.name_fr}</h6>
+                                <p style={{fontSize: '13px', margin:'0'}}>Calories: {el.calories} kcal</p>
+                                <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
+                            </div>
+                        </div>
+                     )}
                 </div>
                 
             </div>  
@@ -40,7 +72,7 @@ function FoodNutrition() {
                             {showPortions && <div className='selected_content'>
                                 <div type='button' className='selected_content_button'>Portion</div>
                                 <div type='button' className='selected_content_button'>gramme</div>
-                                <div type='button' className='selected_content_button'>Portion normale 100g</div>
+                                <div type='button' className='selected_content_button'>Portion 100g</div>
                             </div>}
                         </div>
                     </div>
@@ -131,4 +163,4 @@ function FoodNutrition() {
     );
   }
   
-  export default FoodNutrition;
+  export default Food;

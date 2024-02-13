@@ -27,7 +27,7 @@ connectDB();
 
 App.use('/api/users', userRoute );
 App.use('/api/daily_nutrition', macrosRoute );
-App.use('/api/food_nutrition', foodRoute);
+App.use('/api/food', foodRoute);
 
 App.listen(PORT, (err)=>{
     if (err) {

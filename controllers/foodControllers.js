@@ -5,26 +5,45 @@ const csv = require('csv-parser');
 
 exports.post = async(req, res) => {
     try {
-        fs.createReadStream('nutriments.csv')
+        fs.createReadStream('food.csv')
         .pipe(csv())
         .on('data', async(data) => {
             try {
+
                 if (data.protein === "-") {
                     data.protein = 0;
                 } else {
-                    data.protein =  parseFloat(data.protein.replace(/[^\d.]/g, ''), 10);
+                    data.protein =  parseFloat(data.protein, 10);
                 }
                 if (data.carbohydrates === "-") {
                     data.carbohydrates = 0;
                 } else {
-                    data.carbohydrates =  parseFloat(data.carbohydrates.replace(/[^\d.]/g, ''), 10);
+                    data.carbohydrates =  parseFloat(data.carbohydrates, 10);
                 }
                 if (data.fat === "-") {
                     data.fat = 0;
                 } else {
-                    data.fat =  parseFloat(data.fat.replace(/[^\d.]/g, ''), 10);
+                    data.fat =  parseFloat(data.fat, 10);
                 }
-                data.calories =  parseFloat(data.calories, 10);
+
+                if (data.protein_100 === "-") {
+                    data.protein_100 = 0;
+                } else {
+                    data.protein_100 =  parseFloat(data.protein_100, 10);
+                }
+                if (data.carbohydrates_100 === "-") {
+                    data.carbohydrates_100 = 0;
+                } else {
+                    data.carbohydrates_100 =  parseFloat(data.carbohydrates_100, 10);
+                }
+                if (data.fat_100 === "-") {
+                    data.fat_100 = 0;
+                } else {
+                    data.fat_100 =  parseFloat(data.fat_100, 10);
+                }
+
+                data.calories =  parseInt(data.calories, 10);
+                data.calories_100 =  parseInt(data.calories_100, 10);
                 
                 await Food.create(data);
                 
@@ -46,7 +65,8 @@ exports.post = async(req, res) => {
 
 exports.findByName = async(req, res) => {
     try {
-        let  name = req.body.name
+        
+        let  name = req.query.name;
         let data = await Food.findAll({where: {
             name_fr: {
                 [Op.like]: `%${name}%`

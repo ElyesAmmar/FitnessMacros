@@ -9,7 +9,7 @@ function UserHome() {
   const [focusedLink, setFocusedLink] = useState(1);
   const user  = useSelector((state)=> state.userReducer.user);
   const navigate = useNavigate();
-
+  
     useEffect(()=> {
       dispatch(getUserNutrition(user.id));
       navigate('/dailynutrition');

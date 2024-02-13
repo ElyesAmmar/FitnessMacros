@@ -23,7 +23,7 @@ const Food = sequelize.define('Food', {
         allowNull: false
     },
     fat: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     trans_fat: {
@@ -45,7 +45,7 @@ const Food = sequelize.define('Food', {
         type: DataTypes.STRING
     },
     carbohydrates: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     dietary_fiber: {
@@ -57,7 +57,7 @@ const Food = sequelize.define('Food', {
         allowNull: false
     },
     protein: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     vitamin_a: {
@@ -78,12 +78,16 @@ const Food = sequelize.define('Food', {
     iron: {
         type: DataTypes.STRING
     },
+    serving_size_100: {
+        type: DataTypes.STRING,
+        allowNull: false   
+    },
     calories_100: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
     fat_100: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     trans_fat_100: {
@@ -105,7 +109,7 @@ const Food = sequelize.define('Food', {
         type: DataTypes.STRING
     },
     carbohydrates_100: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     dietary_fiber_100: {
@@ -117,7 +121,7 @@ const Food = sequelize.define('Food', {
         allowNull: false
     },
     protein_100: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     vitamin_a_100: {
