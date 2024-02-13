@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const controllers = require("../controllers/nutritional_valuesControllers");
+const controllers = require("../controllers/foodControllers");
 
 router.post('/post', controllers.post);
 router.get('/getfoods', controllers.findByName);
