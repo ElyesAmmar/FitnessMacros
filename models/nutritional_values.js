@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("../config/db");
 
-const Food_Nutrition = sequelize.define('Food_Nutrition', {
+const Nutritional_Values = sequelize.define('Nutritional_Values', {
     name_fr: {
         type: DataTypes.STRING,
         allowNull: false
@@ -140,4 +140,4 @@ const Food_Nutrition = sequelize.define('Food_Nutrition', {
     }
 });
 
-module.exports = Food_Nutrition;
+module.exports = Nutritional_Values;

@@ -1,5 +1,5 @@
 const { Op } = require('sequelize')
-const Food_Nutrition = require('../models/food_nutrition');
+const Nutritional_Values = require('../models/nutritional_values');
 const fs = require('fs');
 const csv = require('csv-parser');
 
@@ -26,7 +26,7 @@ exports.post = async(req, res) => {
                 }
                 data.calories =  parseFloat(data.calories, 10);
                 
-                await Food_Nutrition.create(data);
+                await Nutritional_Values.create(data);
                 
             } catch (error) {
                 console.log(error);
@@ -47,7 +47,7 @@ exports.post = async(req, res) => {
 exports.findByName = async(req, res) => {
     try {
         let  name = req.body.name
-        let data = await Food_Nutrition.findAll({where: {
+        let data = await Nutritional_Values.findAll({where: {
             name_fr: {
                 [Op.like]: `%${name}%`
             }
@@ -63,7 +63,7 @@ exports.findByName = async(req, res) => {
 
 exports.extractAll = async(req, res)=>{
     try {
-        const data = await Food_Nutrition.findAll();
+        const data = await Nutritional_Values.findAll();
         const header = Object.keys(data[0]).join(',');
         const rows = data.map((el)=> Object.values(el).join(','));
 
