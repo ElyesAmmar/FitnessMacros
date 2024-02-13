@@ -1,4 +1,6 @@
-import './foodNutritionStyle.css'
+import './foodNutritionStyle.css';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 function FoodNutrition() {
     return (
@@ -33,9 +35,19 @@ function FoodNutrition() {
                         <h6 className='title_nutrition_fact'>poulet</h6>
                         <p>valeur pour : 100g</p>
                     </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Calories</p>
-                        <p >34kcal</p>
+                    <div className='macronutrients_pourcentage'>
+                        <div className='calories_bar'>
+                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10}/><br/>
+                            <h5 style={{textAlign: 'center'}}>Glucides</h5>
+                        </div>
+                        <div className='calories_bar'>
+                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10}/><br/>
+                            <h5 style={{textAlign: 'center'}}>Protéines</h5>
+                        </div>
+                        <div className='calories_bar'>
+                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10}/><br/>
+                            <h5 style={{textAlign: 'center'}}>Graisses</h5>
+                        </div>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Calories</p>
@@ -74,13 +86,28 @@ function FoodNutrition() {
                         <p >34kcal</p>
                     </div>
                     <div className='primary_nutrition_fact'>
-                        <p>Sodium</p>
+                        <p>Autre</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
                         <p>34kcal</p>
                     </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Potassium</p>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
                         <p>34kcal</p>
-                    </div>  
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
+                        <p>34kcal</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
+                        <p>34kcal</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
+                        <p>34kcal</p>
+                    </div>
                 </div>
             </div>
             <div className='food_section'>

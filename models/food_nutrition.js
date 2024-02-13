@@ -6,6 +6,18 @@ const Food_Nutrition = sequelize.define('Food_Nutrition', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    name_en: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    serving_size: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    portion: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     calories: {
         type: DataTypes.INTEGER,
         allowNull: false
@@ -13,6 +25,9 @@ const Food_Nutrition = sequelize.define('Food_Nutrition', {
     fat: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    trans_fat: {
+        type: DataTypes.STRING
     },
     saturated_fat: {
         type: DataTypes.STRING
@@ -26,12 +41,11 @@ const Food_Nutrition = sequelize.define('Food_Nutrition', {
     cholesterol: {
         type: DataTypes.STRING
     },
+    sodium: {
+        type: DataTypes.STRING
+    },
     carbohydrates: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    starch: {
-        type: DataTypes.STRING,
         allowNull: false
     },
     dietary_fiber: {
@@ -46,91 +60,82 @@ const Food_Nutrition = sequelize.define('Food_Nutrition', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    water: {
-        type: DataTypes.INTEGER
-    },
-    alcohol: {
+    vitamin_a: {
         type: DataTypes.STRING
     },
-    vitamin_A_retinol: {
+    vitamin_c: {
         type: DataTypes.STRING
     },
-    beta_carotene_provitamin_A: {
-        type: DataTypes.STRING
-    },
-    vitamin_C: {
-        type: DataTypes.STRING
-    },
-    vitamin_D_cholecalciferol: {
-        type: DataTypes.STRING
-    },
-    vitamin_E_tocopherol: {
-        type: DataTypes.STRING
-    },
-    vitamin_K1: {
-        type: DataTypes.STRING
-    },
-    vitamin_K2: {
-        type: DataTypes.STRING
-    },
-    vitamin_B1_thiamine: {
-        type: DataTypes.STRING
-    },
-    vitamin_B2_riboflavin: {
-        type: DataTypes.STRING
-    },
-    vitamin_B3_niacin: {
-        type: DataTypes.STRING
-    },
-    vitamin_B5_panthoneic_acid: {
-        type: DataTypes.STRING
-    },
-    vitamin_B6: {
-        type: DataTypes.STRING
-    },
-    vitamin_B9_folic_acid: {
-        type: DataTypes.STRING
-    },
-    vitamin_B12_cobolamine: {
+    vitamin_d: {
         type: DataTypes.STRING
     },
     calcium: {
         type: DataTypes.STRING
     },
-    phosphorus: {
-        type: DataTypes.STRING
-    },
-    magnesium: {
-        type: DataTypes.STRING
-    },
     potassium: {
-        type: DataTypes.STRING
-    },
-    sodium_salt: {
         type: DataTypes.STRING
     },
     iron: {
         type: DataTypes.STRING
     },
-    copper: {
+    calories_100: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    fat_100: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    trans_fat_100: {
         type: DataTypes.STRING
     },
-    zinc: {
+    saturated_fat_100: {
         type: DataTypes.STRING
     },
-    manganese: {
+    monounsaturated_fat_100: {
         type: DataTypes.STRING
     },
-    selenium: {
+    polyunsaturated_fat_100: {
         type: DataTypes.STRING
     },
-    iodine: {
+    cholesterol_100: {
         type: DataTypes.STRING
     },
-    polyols: {
+    sodium_100: {
         type: DataTypes.STRING
     },
-    organic_acids: {
+    carbohydrates_100: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    dietary_fiber_100: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    sugars_100: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    protein_100: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    vitamin_a_100: {
+        type: DataTypes.STRING
+    },
+    vitamin_c_100: {
+        type: DataTypes.STRING
+    },
+    vitamin_d_100: {
+        type: DataTypes.STRING
+    },
+    calcium_100: {
+        type: DataTypes.STRING
+    },
+    potassium_100: {
+        type: DataTypes.STRING
+    },
+    iron_100: {
         type: DataTypes.STRING
     }
 });

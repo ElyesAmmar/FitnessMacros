@@ -22,7 +22,7 @@ function DailyNutrition () {
                     <div className='macros_nutrions'>
                         <h6>Glucides</h6>
                         <div>
-                            <ProgressBar style={{margin: '20px 10px'}} variant="success" now={40} />
+                            <ProgressBar style={{margin: '20px 10px' }} variant="success" now={40} />
                             <p>{dailyNutrition.carbohydrates}g <br/> 
                                 <p style={{margin: '3px', fontSize: '12px', color:'gray'}}>
                                     Range: {Math.round(dailyNutrition.carbohydrates * 0.8)}g - {Math.round(dailyNutrition.carbohydrates * 1.2)}g
@@ -33,7 +33,7 @@ function DailyNutrition () {
                     <div className='macros_nutrions'>
                         <h6>Protéines</h6>
                         <div>
-                            <ProgressBar style={{margin: '20px 10px'}} variant="warning" now={40} />
+                            <ProgressBar style={{margin: '20px 10px'}} variant="success" now={40} />
                             <p>{dailyNutrition.protein}g<br/> 
                                 <p style={{margin: '3px', fontSize: '12px', color:'gray'}}>
                                     Range: {Math.round(dailyNutrition.protein * 0.8)}g - {Math.round(dailyNutrition.protein * 1.2)}g
@@ -45,7 +45,7 @@ function DailyNutrition () {
                     <div className='macros_nutrions'>
                         <h6>Graisses</h6>
                         <div>
-                            <ProgressBar style={{margin: '20px 10px'}} variant="danger" now={40} />
+                            <ProgressBar style={{margin: '20px 10px'}} variant="success" now={40} />
                             <p>{dailyNutrition.fat}g<br/> 
                                 <p style={{margin: '3px', fontSize: '12px', color:'gray'}}>
                                     Range: {Math.round(dailyNutrition.fat * 0.8)}g - {Math.round(dailyNutrition.fat * 1.2)}g
