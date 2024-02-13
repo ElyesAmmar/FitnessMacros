@@ -9,19 +9,24 @@ import { getFood } from '../JS/actions/food';
 function Food() {
     const dispatch = useDispatch();
     const [showPortions, setShowPortions] = useState(false);
+    const [showList, setShowList] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const food = useSelector((state)=> state.foodReducer.food);
+    const [nutrients, setNutrients] = useState({});
+    const [sum, setSum] = useState(0);
     console.log(food);
+    console.log(sum);
 
     const handleInput = (e) => {
-        console.log(e.target.value);
+        setShowList(true);
         setIsLoading(true);
         if (e.target.value !== '') {
             dispatch(getFood(e.target.value));
         } 
         setIsLoading(false);
     }
-
+    
+    
     return (
       <div className='food_body'>
         <div className="food_content">
@@ -45,9 +50,9 @@ function Food() {
                         </div>
                         }
                     </div>
-                    {food.map((el)=>
+                    {showList && food.map((el)=>
                         <div key={el.id} className='list_foods'>
-                            <div className='element_food'>
+                            <div className='element_food' onClick={()=> {setShowList(false);setNutrients(el); setSum(el.protein + el.carbohydrates + el.fat)}} >
                                 <h6 style={{margin:'2px'}}>{el.name_fr}</h6>
                                 <p style={{fontSize: '13px', margin:'0'}}>Calories: {el.calories} kcal</p>
                                 <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
@@ -77,81 +82,108 @@ function Food() {
                         </div>
                     </div>
                 <div className='nutrition_fact'>
-                    
                     <div className='head_nutrition_fact'>
-                        <h6 className='title_nutrition_fact'>Aliments: poulet</h6>
-                        <p>valeur pour : 100g</p>
+                        <h6 className='title_nutrition_fact'>Aliments: {nutrients.name_fr}</h6>
+                        <p>valeur pour : {nutrients.serving_size}</p>
                     </div>
                     <div>
                         <h5>INFORMATIONS NUTRITIONNELLES</h5>
                     </div>
                     <div className='macronutrients_pourcentage'>
                         <div className='calories_bar'>
-                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10}/><br/>
+                            <CircularProgressbar 
+                                styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} 
+                                text={`${parseInt((nutrients.carbohydrates/sum)*100)}%`} 
+                                value={(nutrients.carbohydrates/sum)*100}
+                            /><br/>
                             <h5 style={{textAlign: 'center'}}>Glucides</h5>
                         </div>
                         <div className='calories_bar'>
-                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10}/><br/>
+                            <CircularProgressbar 
+                                styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} 
+                                text={`${parseInt((nutrients.protein/sum)*100)}%`} 
+                                value={(nutrients.protein/sum)*100}
+                            /><br/>
                             <h5 style={{textAlign: 'center'}}>Protéines</h5>
                         </div>
                         <div className='calories_bar'>
-                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10}/><br/>
+                            <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} text={`${parseInt((nutrients.fat/sum)*100)}%`} value={(nutrients.fat/sum)*100}/><br/>
                             <h5 style={{textAlign: 'center'}}>Graisses</h5>
                         </div>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Calories</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.calories} kcal</p>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Glucides</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.carbohydrates}g</p>
                     </div>
                     <div  className='secondary_nutrition_fact'>
                         <p>Fibres</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.dietary_fiber}g</p>
                     </div>
                     <div  className='secondary_nutrition_fact'>
                         <p>Sucres</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.sugars}g</p>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Protéines</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.protein}g</p>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Graisses</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.fat}g</p>
                     </div>
                     <div className='secondary_nutrition_fact'>
-                        <p>Graisses saturées</p>
-                        <p>34kcal</p>
+                        <p>trans_fat</p>
+                        <p>{nutrients.trans_fat}g</p>
                     </div>
                     <div className='secondary_nutrition_fact'>
-                        <p>Graisses insaturées</p>
-                        <p>34kcal</p>
+                        <p>saturated_fat</p>
+                        <p>{nutrients.saturated_fat}g</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>monounsaturated_fat</p>
+                        <p >{nutrients.monounsaturated_fat}g</p>
+                    </div> 
+                    <div className='secondary_nutrition_fact'>
+                        <p>polyunsaturated_fat</p>
+                        <p>{nutrients.polyunsaturated_fat}g</p>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Cholestérol</p>
-                        <p >34kcal</p>
+                        <p >{nutrients.cholesterol}g</p>
                     </div> <div className='primary_nutrition_fact'>
                         <p>Sodium</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.sodium}g</p>
                     </div>
                     <div className='primary_nutrition_fact'>
                         <p>Autre</p>
                     </div>
                     <div className='secondary_nutrition_fact'>
                         <p>Graisses insaturées</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.vitamin_a}</p>
                     </div>
                     <div className='secondary_nutrition_fact'>
                         <p>Graisses insaturées</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.vitamin_c}</p>
                     </div>
                     <div className='secondary_nutrition_fact'>
                         <p>Graisses insaturées</p>
-                        <p>34kcal</p>
+                        <p>{nutrients.vitamin_d}</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
+                        <p>{nutrients.calcium}</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
+                        <p>{nutrients.potassium}</p>
+                    </div>
+                    <div className='secondary_nutrition_fact'>
+                        <p>Graisses insaturées</p>
+                        <p>{nutrients.iron}</p>
                     </div>
                 </div>
             </div>

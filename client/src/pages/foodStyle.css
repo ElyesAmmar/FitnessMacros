@@ -151,12 +151,13 @@
   /* width: 70%; */
   display: flex;
   justify-content: space-between;
+  height: 30px;
 }
 
 .primary_nutrition_fact {
   font-weight: 650;
   border-top: 1px solid #E3E3E3;
- margin-top: 5px;
+  margin-top: 10px;
 }
 .head_nutrition_fact {
 margin: 25px 0 25px 0;
