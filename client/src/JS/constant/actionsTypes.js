@@ -6,3 +6,4 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const GET_DAILY_NUTRITION = 'GET_DAILY_NUTRITION';
 export const GET_FOOD_BY_NAME = 'GET_FOOD_BY_NAME';
+export const LOAD_FOOD = "LOAD_FOOD";

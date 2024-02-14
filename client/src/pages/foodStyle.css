@@ -3,7 +3,6 @@
     /* padding: 30px; */
     /* background-color: #EBECE4; */
     margin: 0 auto;
-    height: 1000px;
     background-color: #EBECE4;
 }
 
@@ -59,114 +58,7 @@
   top: 13px
 }
 
-              /* serving size */
 
-.serving_size {
-  display: flex;
-  justify-content: space-around;
-}
-
-.selected_list {
-  width:70%;
-  position: relative;
-}
-.selected_content {
-  width: 100%;
-  margin-top: 5px;
-  border: 1px solid #DCDCDC;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-}
-.selected_content_button {
-  width: 100%;
-  height: 40px;
-  border-bottom: 1px solid #DCDCDC;
-  background-color: white;
-  padding: 6px 10px;
-}
-.selected_content_button:hover {
-  background-color: #E3E3E3;
-  cursor: pointer;
-}
-.selected_button {
-  width: 100%;
-  height: 50px;
-  border: 1px solid #DCDCDC;
-  border-radius: 7px;
-  background-color: white;
-  display: flex;
-}
-.selected_button_title {
-  width: 80%;
-  padding: 5px 10px;
-  border: none;
-  background-color: white;
-}
-.selected_button_icon {
-  width: 20%;
-  padding: 10px 10px;
-  /* padding: 10px 20px; */
-}
-.selected_button_icon:hover {
-  cursor: pointer;
-}
-.selected_button_icon:active {
-  background-color: #DCDCDC;
-  border: 1 solid #DCDCDC;
-  border-radius: 17px;
-}
-
-/* nutrion fact table */
-
-/* .nutrition_fact_body {
-  width: 50%;
-  margin: 10px;
-  box-shadow: 0 0 8px #B0C4DE;
-  background-color: white;
-  border-radius: 15px;
-  padding: 15px;
-} */
-.nutrition_fact {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 5px 5px 5px;
-  /* width: 425px; */
-  /* padding: 10px; */
-}
-.macronutrients_pourcentage {
-  margin: 15px;
-  display: flex;
-  justify-content: space-around;
-}
-.calories_bar {
-  width: 80px;
-  height: 100px;
-}
-
-.nutrition_fact h4 {
-  color: #424242;
-}
-.primary_nutrition_fact, .secondary_nutrition_fact {
-  /* width: 70%; */
-  display: flex;
-  justify-content: space-between;
-  height: 30px;
-}
-
-.primary_nutrition_fact {
-  font-weight: 650;
-  border-top: 1px solid #E3E3E3;
-  margin-top: 10px;
-}
-.head_nutrition_fact {
-margin: 25px 0 25px 0;
-}
-.title_nutrition_fact {
-  font-weight: 600;
-  font-size: 22px;
-  
-}
 @media screen and (max-width: 1300px) {
   .food_body {
     width: 100%;
@@ -178,9 +70,6 @@ margin: 25px 0 25px 0;
     }
     .food_content {
       width: 100%;
-    }
-    .nutrition_fact {
-      margin: 0;
     }
   }
 
@@ -194,8 +83,5 @@ margin: 25px 0 25px 0;
     }
     .food_section {
       width: 100%;
-    }
-    .nutrition_fact {
-      margin: 0;
     }
 }
