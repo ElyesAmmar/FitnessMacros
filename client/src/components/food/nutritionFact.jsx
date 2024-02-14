@@ -13,32 +13,34 @@ function NutritionFact({sum,nutrients,portion}) {
     return (
         <>
             <div className='nutrition_fact_body'>
-                <div className='serving_size'>
-                    <input type='number' style={{width: '20%'}}/>
-                    <div className='selected_list'>
-                        <div className='selected_button' onClick={()=> showPortionsList ?  setShowPortionsList(false) : setShowPortionsList(true)}>
-                            <input type='button' value={portion} className='selected_button_title'/>
-                            <div className='selected_button_icon'>
-                                <svg style={{width: '24px', height: '24px'}} class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
-                                </svg>
-                            </div> 
-                        </div>
-                        {showPortionsList && <div className='selected_content'>
-                            <div type='button' className='selected_content_button'>Portion: {nutrients.serving_size_fr}</div>
-                            {nutrients.serving_size_100 === '100 g' &&
-                                <div type='button' className='selected_content_button'>gramme</div>
-                            }
-                        </div>}
-                    </div>
+                <div className='nutrition_fact_title'>
+                    <h6 className='title_nutrition_fact'>{nutrients.name_fr}</h6>
                 </div>
                 <div className='nutrition_fact'>
-                    <div className='head_nutrition_fact'>
-                        <h6 className='title_nutrition_fact'>Aliments: {nutrients.name_fr}</h6>
-                        <p>Portion : {nutrients.serving_size_fr}</p>
+                    <div className='serving_size'>
+                        <input type='number' style={{width: '20%'}}/>
+                        <div className='selected_list'>
+                            <div className='selected_button' onClick={()=> showPortionsList ?  setShowPortionsList(false) : setShowPortionsList(true)}>
+                                <input type='button' value={portion} className='selected_button_title'/>
+                                <div className='selected_button_icon'>
+                                    <svg style={{width: '24px', height: '24px'}} class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
+                                    </svg>
+                                </div> 
+                            </div>
+                            {showPortionsList && 
+                                <div className='selected_content'>
+                                    <div type='button' className='selected_content_button'>Portion: {nutrients.serving_size_fr}</div>
+                                        {nutrients.serving_size_100 === '100 g' &&
+                                            <div type='button' className='selected_content_button'>gramme</div>
+                                        }
+                                </div>
+                            }
+                        </div>
                     </div>
-                    <div>
+                    <div className='head_nutrition_fact'>
                         <h5>INFORMATIONS NUTRITIONNELLES</h5>
+                        <p>Portion : {nutrients.serving_size_fr}</p>
                     </div>
                     <div className='macronutrients_pourcentage'>
                         <div className='calories_bar'>

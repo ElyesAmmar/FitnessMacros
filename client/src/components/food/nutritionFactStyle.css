@@ -1,7 +1,9 @@
 .nutrition_fact_body {
   width: 100%
 }
-
+.nutrition_fact_title {
+  margin: 10px 8px 35px 8px
+}
 /* serving size */
 
 .serving_size {

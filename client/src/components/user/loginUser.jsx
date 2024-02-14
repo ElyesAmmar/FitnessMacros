@@ -57,7 +57,8 @@ function Login() {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <button 
+          <button
+            type='submit' 
             className='primary_btn' 
             style={{margin:'0 auto', width: '80%', height: '50px'}} 
             onClick={signIn}
