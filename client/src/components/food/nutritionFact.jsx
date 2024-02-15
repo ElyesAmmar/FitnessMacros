@@ -135,7 +135,7 @@ function NutritionFact({sum,nutrients}) {
                         <p>Portion : {displayedMacros().servingSize}</p>
                     </div>
                     <div className='macronutrients_pourcentage'>
-                        <div className='calories_bar'>
+                        <div className='calories_bar_fact'>
                             <CircularProgressbar 
                                 styles={buildStyles({textColor: "#424242", pathColor: "	#4169e1"})} 
                                 text={`${percentage(nutrients.carbohydrates)}%`} 
@@ -143,7 +143,7 @@ function NutritionFact({sum,nutrients}) {
                             /><br/>
                             <h5 style={{textAlign: 'center'}}>Glucides</h5>
                         </div>
-                        <div className='calories_bar'>
+                        <div className='calories_bar_fact'>
                             <CircularProgressbar 
                                 styles={buildStyles({textColor: "#424242", pathColor: "#FFD700"})} 
                                 text={`${percentage(nutrients.protein)}%`} 
@@ -151,7 +151,7 @@ function NutritionFact({sum,nutrients}) {
                             /><br/>
                             <h5 style={{textAlign: 'center'}}>Protéines</h5>
                         </div>
-                        <div className='calories_bar'>
+                        <div className='calories_bar_fact'>
                             <CircularProgressbar 
                                 styles={buildStyles({textColor: "#424242", pathColor: "	#b22222"})} 
                                 text={`${percentage(nutrients.fat)}%`} 

@@ -20,7 +20,12 @@ function Navbar() {
     <div>
         <nav className='navbar'>
             <ul className='ul_navbar'>
-                <h1 className='title_navbar' style={{borderBottom: '3px solid #228B22'}} onClick={()=> navigate('/')}>FitnessLife</h1>
+                <h1 
+                    className='title_navbar' 
+                    style={{borderBottom: '3px solid #228B22'}} 
+                    onClick={()=> {isAuth? navigate('/daily-nutrition') : navigate('/')}}
+                >
+                FitnessLife</h1>
                 <li className='li_navbar'>
                     <Link to='/food'>Aliments</Link>
                 </li>
@@ -46,7 +51,7 @@ function Navbar() {
                     </button>
                     {showDropdown && 
                         <div className='dropdown_content'>
-                            <div className='dropdown_content_button' onClick={()=> {navigate('/dailynutrition');setShowDropdown(false)}}>Mon accueil</div>
+                            <div className='dropdown_content_button' onClick={()=> {navigate('/daily-nutrition');setShowDropdown(false)}}>Mon accueil</div>
                             <div className='dropdown_content_button'>parametres</div>
                             <div className='dropdown_content_button' onClick={()=>{logOutUser();setShowDropdown(false)}}>Se deconnecter</div>
                         </div>

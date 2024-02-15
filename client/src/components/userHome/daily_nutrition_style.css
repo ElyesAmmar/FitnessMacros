@@ -17,39 +17,65 @@
     padding: 20px;
 }
 .section1 {
-    width: 35%;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .calories_bar {
-    width: 60%;
+    width: 70%;
     color: #228B22;
 }
 .section2 {
     height: 40%;
-    width: 35%;
+    width: 40%;
 }
 
-.macros_nutrions h6 {
+.macros_nutritions h6 {
     margin: 5px 11px 5px 11px;
 }
-.macros_nutrions p {
+.nutritional_values {
+    margin: 5px;
+    width: 20%;
+    font-weight: 600;
+    /* width: 100%; */
+}
+.nutritional_values_bar {
+    width: 48%;
+    height: 50px;
+    padding: 20px 10px;
+}
+.nutritional_values_value {
+    width: 48%;
+}
+.nutritional_values_range {
     margin: 5px;
     width: 20%;
     font-weight: bold;
+    margin: 3px; 
+    font-size: 12px;
+    color: gray;
+    width: 100%;
 }
-.macros_nutrions div {
+
+.nutritional_values_block {
     display: flex;
+    justify-content: space-between;
     width: 100%;
 }
-.macros_nutrions p {
-    width: 100%;
-}
+
 /* For screens between 600px and 900px */
 @media screen and (min-width: 600px) and (max-width: 900px) {
     .daily-nutrition_body {
       width: 90%;
+    }
+    .section1 {
+        width: 50%;
+        margin: 0 auto;
+    }
+    .nutritional_values_bar {
+        height: 50px;
+        padding: 15px 5px;
     }
   }
 @media screen and (max-width: 1300px) {
@@ -60,25 +86,42 @@
  @media screen and (max-width: 600px) {
     .daily-nutrition_body {
       width: 100%;
-}
+    }
     .daily-nutrition_content {
         display: flex;
         flex-direction: column; 
-}
+    }
+    .nutritional_values_bar {
+        width: 100%;
+        height: 20px;
+        padding: 5px 5px;
+    }
+    .nutritional_values_value {
+        width: 100%;
+    }
     .section1 {
-        width: 50%;
+        width: 70%;
         margin: 0 auto;
+    }
+    .section1 h1 {
+        font-size: 30px;
     }
     .section2 {
         width: 100%;
         display: flex;
+        justify-content: space-between;
         flex-direction: row;
     }
-    .macros_nutrions {
+    .macros_nutritions {
         width: 30%;
     }
-    .macros_nutrions div {
+    .nutritional_values_block {
         display: flex;
         flex-direction: column;
     }   
+  }
+  @media screen and (max-width: 400px) {
+    .section1 h1 {
+        font-size: 20px;
+    }
   }

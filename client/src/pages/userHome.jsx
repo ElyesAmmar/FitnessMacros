@@ -2,7 +2,7 @@ import './userHomeStyle.css'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserNutrition } from '../JS/actions/dailyNutrition';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate, Navigate } from 'react-router-dom';
 
 function UserHome() {
   const dispatch = useDispatch();
@@ -12,16 +12,16 @@ function UserHome() {
   
     useEffect(()=> {
       dispatch(getUserNutrition(user.id));
-      navigate('/dailynutrition');
+      navigate('/daily-nutrition');
     },[]);
     
   return (
     <div  className='home_user_body'>
       <nav className='navbar_user_home'>
         <ul>
-          <li><Link to='/dailynutrition' onClick={()=> setFocusedLink(1)} autoFocus={focusedLink === 1}>Mon accueil</Link></li>
+          <li><Link to='/daily-nutrition' onClick={()=> setFocusedLink(1)} autoFocus={focusedLink === 1}>Mon accueil</Link></li>
           <li><Link onClick={()=> setFocusedLink(2)} autoFocus={focusedLink === 2}>Exercices</Link></li>
-          <li><Link onClick={()=> setFocusedLink(3)} autoFocus={focusedLink === 3}>Mes informations</Link></li>
+          <li><Link to='/user-information' onClick={()=> setFocusedLink(3)} autoFocus={focusedLink === 3}>Mes informations</Link></li>
         </ul>
       </nav>
        <Outlet />

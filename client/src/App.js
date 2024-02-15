@@ -9,6 +9,7 @@ import { getUser } from './JS/actions/user'
 import UserHome from './pages/userHome';
 import DailyNutrition from './components/userHome/daily_nutrition';
 import Food from './pages/food';
+import UserInfo from './components/userHome/userInformation';
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
         {/* <Route path='/' element={<Home />}></Route> */}
           <Route path='/food' element={<Food />} />
           <Route path='/' element={isAuth? <UserHome />  : <Home />}>
-            <Route path='/dailynutrition' element={isAuth? <DailyNutrition /> : <Navigate to='/' />} />
+            <Route path='/daily-nutrition' element={isAuth? <DailyNutrition /> : <Navigate to='/' />} />
+            <Route path='/user-information' element= {isAuth? <UserInfo /> : <Navigate to='/' />} />
           </Route>
           
         </Routes>

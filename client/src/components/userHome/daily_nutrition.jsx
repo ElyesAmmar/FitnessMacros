@@ -19,38 +19,48 @@ function DailyNutrition () {
                     </div>
                 </div>
                 <div className='section2'>
-                    <div className='macros_nutrions'>
-                        <h6>Glucides</h6>
-                        <div>
-                            <ProgressBar style={{margin: '20px 10px' }} variant="success" now={40} />
-                            <p>{dailyNutrition.carbohydrates}g <br/> 
-                                <p style={{margin: '3px', fontSize: '12px', color:'gray'}}>
+                    <div className='macros_nutritions'>
+                        <h6 className='nutritional_values'>Glucides</h6>
+                        <div className='nutritional_values_block'>
+                            <div className='nutritional_values_bar'>
+                                <ProgressBar  variant="primary" now={40} />
+                            </div>
+                            <div className='nutritional_values_value'>
+                                <p className='nutritional_values'>{dailyNutrition.carbohydrates}g </p>
+                                <p className='nutritional_values_range'>
                                     Range: {Math.round(dailyNutrition.carbohydrates * 0.8)}g - {Math.round(dailyNutrition.carbohydrates * 1.2)}g
                                 </p>  
-                            </p>
+                            </div>
                         </div>
                     </div>
-                    <div className='macros_nutrions'>
-                        <h6>Protéines</h6>
-                        <div>
-                            <ProgressBar style={{margin: '20px 10px'}} variant="success" now={40} />
-                            <p>{dailyNutrition.protein}g<br/> 
-                                <p style={{margin: '3px', fontSize: '12px', color:'gray'}}>
+                    <div className='macros_nutritions'>
+                        <h6 className='nutritional_values'>Protéines</h6>
+                        <div className='nutritional_values_block'>
+                            <div className='nutritional_values_bar'>
+                                <ProgressBar variant="warning" now={40} />
+                            </div>
+                            <div className='nutritional_values_value'>
+                                <p className='nutritional_values'>{dailyNutrition.protein}g</p> 
+                                <p className='nutritional_values_range'>
                                     Range: {Math.round(dailyNutrition.protein * 0.8)}g - {Math.round(dailyNutrition.protein * 1.2)}g
-                                </p> 
-                            </p>
+                                </p>
+                            </div>
+                                
                         </div>
                         
                     </div>
-                    <div className='macros_nutrions'>
-                        <h6>Graisses</h6>
-                        <div>
-                            <ProgressBar style={{margin: '20px 10px'}} variant="success" now={40} />
-                            <p>{dailyNutrition.fat}g<br/> 
-                                <p style={{margin: '3px', fontSize: '12px', color:'gray'}}>
+                    <div className='macros_nutritions'>
+                        <h6 className='nutritional_values'>Graisses</h6>
+                        <div className='nutritional_values_block'>
+                            <div className='nutritional_values_bar'>
+                                <ProgressBar variant="danger" now={40} />
+                            </div>
+                            <div className='nutritional_values_value'>
+                                <p className='nutritional_values'>{dailyNutrition.fat}g</p> 
+                                <p className='nutritional_values_range'>
                                     Range: {Math.round(dailyNutrition.fat * 0.8)}g - {Math.round(dailyNutrition.fat * 1.2)}g
-                                </p> 
-                            </p>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
