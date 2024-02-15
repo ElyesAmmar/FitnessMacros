@@ -1,9 +1,10 @@
 .nutrition_fact_body {
-  width: 100%
+  width: 100%;
 }
 .nutrition_fact_title {
   margin: 10px 8px 35px 8px
 }
+
 /* serving size */
 
 .serving_size {
@@ -95,7 +96,7 @@
   margin-top: 10px;
 }
 .head_nutrition_fact {
-  margin: 25px 0 25px 0;
+  margin-top: 30px;
 }
 .title_nutrition_fact {
   font-weight: 600;

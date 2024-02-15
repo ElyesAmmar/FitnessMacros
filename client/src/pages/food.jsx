@@ -12,7 +12,7 @@ function Food() {
     const isLoading = useSelector((state)=> state.foodReducer.isLoading);
     const [showList, setShowList] = useState(false);
     const [nutrients, setNutrients] = useState({});
-    const [portion, setPortion] = useState('');
+    // const [portion, setPortion] = useState('');
     const [sum, setSum] = useState(0);
    
     console.log(nutrients);
@@ -31,13 +31,17 @@ function Food() {
     const selectFood = (food) => {
         setShowList(false);
         setNutrients(food); 
-        setPortion(food.serving_size_fr);
         setSum(food.protein + food.carbohydrates + food.fat);
     }
 
     return (
       <div className='food_body'>
         <div className="food_content">
+            {Object.values(nutrients).length > 0 &&
+                <div className='food_section'>
+                        <NutritionFact nutrients={nutrients} sum={sum} />
+                </div>
+            }
             <div className='food_section'>
                 <div>
                     <h4>Infos nutritionnelles de l'aliment</h4>
@@ -77,16 +81,7 @@ function Food() {
                         </div>
                     }
                 </div>
-                
             </div>  
-            {Object.values(nutrients).length > 0 &&
-                <div className='food_section'>
-                    <NutritionFact nutrients={nutrients} sum={sum} portion={portion} />
-                </div>
-            }
-            <div className='food_section'>
-                
-            </div>
         </div>
       </div>
     );

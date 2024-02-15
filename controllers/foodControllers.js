@@ -67,9 +67,7 @@ exports.findByName = async(req, res) => {
     try {
         
         let  name = req.query.name;
-        console.log(name);
         let  names = name.split(' ');
-        console.log(names);
         let whereCondition = names.map((word)=>  ({[Op.substring]: word}));
         let data = await Food.findAll({where: {
             name_fr: {
