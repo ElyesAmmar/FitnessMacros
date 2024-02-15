@@ -10,8 +10,8 @@ function DailyNutrition () {
     const dailyNutrition  = useSelector((state)=> state.dailyNutritionReducer.dailyNutrition);
     console.log(dailyNutrition);
     return (
-        <div className='daily-nutrition_body'>
-            <div className='daily-nutrition_content'>
+        <div className='daily_nutrition_body'>
+            <div className='daily_nutrition_content'>
                 <div className='section1'>
                     <div className='calories_bar'>
                         <CircularProgressbar styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} value={10} text={dailyNutrition.calories} /><br/>
@@ -65,7 +65,7 @@ function DailyNutrition () {
                     </div>
                 </div>
             </div>
-            <div className='daily-nutrition_content'>
+            <div className='daily_nutrition_content'>
                 
             </div>
             

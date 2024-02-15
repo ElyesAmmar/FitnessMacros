@@ -1,26 +1,21 @@
 .food_body {
     width: 1200px;
-    /* padding: 30px; */
-    /* background-color: #EBECE4; */
     margin: 0 auto;
     background-color: #EBECE4;
-}
-
-.food_content {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0px auto;
-    width: 100%;
+    margin: 0px auto; 
 }
 
-.food_section {
-  margin: 10px;
-  width: 45%;
-  box-shadow: 0 0 8px #B0C4DE;
-  background-color: white;
-  border-radius: 15px;
-  padding: 15px;
+.food_content {
+    margin: 20px auto 0px;
+    width: 45%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #B0C4DE;
+    padding: 15px;
+    margin: 10px;
 }
 
 /* search food block */
@@ -73,7 +68,7 @@
     }
   } */
 
- @media screen and (max-width: 900px) {
+ @media screen and (max-width: 1000px) {
     .food_body {
       width: 100%;
     }

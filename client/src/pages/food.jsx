@@ -38,11 +38,13 @@ function Food() {
       <div className='food_body'>
         <div className="food_content">
             {Object.values(nutrients).length > 0 &&
-                <div className='food_section'>
+               
                         <NutritionFact nutrients={nutrients} sum={sum} />
-                </div>
+                
             }
-            <div className='food_section'>
+        </div>
+        <div className="food_content">
+            
                 <div>
                     <h4>Infos nutritionnelles de l'aliment</h4>
                 </div>
@@ -81,7 +83,7 @@ function Food() {
                         </div>
                     }
                 </div>
-            </div>  
+              
         </div>
       </div>
     );

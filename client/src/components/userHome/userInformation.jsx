@@ -3,8 +3,9 @@ import './userInformationStyle.css';
 
 function  UserInfo() {
     return (
-        <div className='user_info'>
-            <h1>hello</h1>
+        <div className='user_info_body'>
+            
+            
         </div>
     )
 }
