@@ -82,18 +82,20 @@
   color: #424242;
 }
 
-.primary_nutrition_fact,
-.secondary_nutrition_fact {
+.nutritional_fact_table tr {
   /* width: 70%; */
   display: flex;
   justify-content: space-between;
   height: 30px;
 }
-
+.nutritional_fact_table th {
+  padding: 5px 0;
+}
 .primary_nutrition_fact {
-  font-weight: 650;
+  /* font-weight: 650; */
   border-top: 1px solid #e3e3e3;
-  margin-top: 10px;
+  margin-top: 5px;
+
 }
 .head_nutrition_fact {
   margin-top: 30px;

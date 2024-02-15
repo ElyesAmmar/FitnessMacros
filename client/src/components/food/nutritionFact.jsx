@@ -160,80 +160,83 @@ function NutritionFact({sum,nutrients}) {
                             <h5 style={{textAlign: 'center'}}>Graisses</h5>
                         </div>
                     </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Calories</p>
-                        <p>{parseInt((displayedMacros().calories))} kcal</p>
-                    </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Glucides</p>
-                        <p>{parseInt((displayedMacros().carbohydrates))}g</p>
-                    </div>
-                    <div  className='secondary_nutrition_fact'>
-                        <p>Fibres</p>
-                        <p>{isNaN(displayedMacros().dietaryFiber)? '- ' : parseInt((displayedMacros().dietaryFiber)) + 'g'}</p>
-                    </div>
-                    <div  className='secondary_nutrition_fact'>
-                        <p>Sucres</p>
-                        <p>{isNaN(displayedMacros().sugars)? '- ' : parseInt((displayedMacros().sugars)) + 'g'}</p>
-                    </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Protéines</p>
-                        <p>{parseInt((displayedMacros().protein))}g</p>
-                    </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Graisses</p>
-                        <p>{parseInt((displayedMacros().fat))}g</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>trans_fat</p>
-                        <p>{isNaN(displayedMacros().transFat)? '- ' : parseInt((displayedMacros().transFat)) + 'g'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>saturated_fat</p>
-                        <p>{isNaN(displayedMacros().saturedFat)? '- ' : parseInt((displayedMacros().saturedFat)) + 'g'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>monounsaturated_fat</p>
-                        <p>{isNaN(displayedMacros().monounsaturatedFat)? '- ' : parseInt((displayedMacros().monounsaturatedFat)) + 'g'}</p>
-                    </div> 
-                    <div className='secondary_nutrition_fact'>
-                        <p>polyunsaturated_fat</p>
-                        <p>{isNaN(displayedMacros().polyunsaturatedFat)? '- ' : parseInt((displayedMacros().polyunsaturatedFat)) + 'g'}</p>
-                    </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Cholestérol</p>
-                        <p >{isNaN(displayedMacros().cholesterol)? '- ' : parseInt((displayedMacros().cholesterol)) + 'g'}</p>
-                    </div> <div className='primary_nutrition_fact'>
-                        <p>Sodium</p>
-                        <p>{(parseInt(displayedMacros().sodium))}g</p>
-                    </div>
-                    <div className='primary_nutrition_fact'>
-                        <p>Autre</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Vitamine A</p>
-                        <p>{isNaN(displayedMacros().vitaminA)? '- ' : (parseInt(displayedMacros().vitaminA)) + 'mg'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Vitamine C</p>
-                        <p>{isNaN(displayedMacros().vitaminC)? '- ' : (parseInt(displayedMacros().vitaminC)) + 'mg'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Vitamine D</p>
-                        <p>{isNaN(displayedMacros().vitaminD)? '- ' : (parseInt(displayedMacros().vitaminD)) + 'mg'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Calcium</p>
-                        <p>{isNaN(displayedMacros().calcium)? '- ' : (parseInt(displayedMacros().calcium)) + 'mg'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Potassium</p>
-                        <p>{isNaN(displayedMacros().potassium)? '- ' : (parseInt(displayedMacros().potassium)) + 'mg'}</p>
-                    </div>
-                    <div className='secondary_nutrition_fact'>
-                        <p>Iron</p>
-                        <p>{isNaN(displayedMacros().iron)? '- ' : (parseInt(displayedMacros().iron)) + 'mg'}</p>
-                    </div>
+                    <table className='nutritional_fact_table'>
+                        <tr className='primary_nutrition_fact'>
+                            <th>Calories</th>
+                            <th>{parseInt((displayedMacros().calories))} kcal</th>
+                        </tr>
+                        <tr className='primary_nutrition_fact'>
+                            <th>Glucides</th>
+                            <th>{parseInt((displayedMacros().carbohydrates))}g</th>
+                        </tr>
+                        <tr  className='secondary_nutrition_fact'>
+                            <td>Fibres</td>
+                            <td>{isNaN(displayedMacros().dietaryFiber)? '- ' : parseInt((displayedMacros().dietaryFiber)) + 'g'}</td>
+                        </tr>
+                        <tr  className='secondary_nutrition_fact'>
+                            <td>Sucres</td>
+                            <td>{isNaN(displayedMacros().sugars)? '- ' : parseInt((displayedMacros().sugars)) + 'g'}</td>
+                        </tr>
+                        <tr className='primary_nutrition_fact'>
+                            <th>Protéines</th>
+                            <th>{parseInt((displayedMacros().protein))}g</th>
+                        </tr>
+                        <tr className='primary_nutrition_fact'>
+                            <th>Graisses</th>
+                            <th>{parseInt((displayedMacros().fat))}g</th>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>trans_fat</td>
+                            <td>{isNaN(displayedMacros().transFat)? '- ' : parseInt((displayedMacros().transFat)) + 'g'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>saturated_fat</td>
+                            <td>{isNaN(displayedMacros().saturedFat)? '- ' : parseInt((displayedMacros().saturedFat)) + 'g'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>monounsaturated_fat</td>
+                            <td>{isNaN(displayedMacros().monounsaturatedFat)? '- ' : parseInt((displayedMacros().monounsaturatedFat)) + 'g'}</td>
+                        </tr> 
+                        <tr className='secondary_nutrition_fact'>
+                            <td>polyunsaturated_fat</td>
+                            <td>{isNaN(displayedMacros().polyunsaturatedFat)? '- ' : parseInt((displayedMacros().polyunsaturatedFat)) + 'g'}</td>
+                        </tr>
+                        <tr className='primary_nutrition_fact'>
+                            <th>Cholestérol</th>
+                            <th >{isNaN(displayedMacros().cholesterol)? '- ' : parseInt((displayedMacros().cholesterol)) + 'g'}</th>
+                        </tr> 
+                        <tr className='primary_nutrition_fact'>
+                            <th>Sodium</th>
+                            <th>{(parseInt(displayedMacros().sodium))}g</th>
+                        </tr>
+                        <tr className='primary_nutrition_fact'>
+                            <th>Autre</th>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>Vitamine A</td>
+                            <td>{isNaN(displayedMacros().vitaminA)? '- ' : (parseInt(displayedMacros().vitaminA)) + 'mg'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>Vitamine C</td>
+                            <td>{isNaN(displayedMacros().vitaminC)? '- ' : (parseInt(displayedMacros().vitaminC)) + 'mg'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>Vitamine D</td>
+                            <td>{isNaN(displayedMacros().vitaminD)? '- ' : (parseInt(displayedMacros().vitaminD)) + 'mg'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>Calcium</td>
+                            <td>{isNaN(displayedMacros().calcium)? '- ' : (parseInt(displayedMacros().calcium)) + 'mg'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>Potassium</td>
+                            <td>{isNaN(displayedMacros().potassium)? '- ' : (parseInt(displayedMacros().potassium)) + 'mg'}</td>
+                        </tr>
+                        <tr className='secondary_nutrition_fact'>
+                            <td>Iron</td>
+                            <td>{isNaN(displayedMacros().iron)? '- ' : (parseInt(displayedMacros().iron)) + 'mg'}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>   
         </>

@@ -1,20 +1,20 @@
 .daily_nutrition_body {
     width: 1200px;
-    /* display: flex;
-    flex-direction: column; */
     margin: 0 auto;
     background-color: #EBECE4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
 .daily_nutrition_content {
     margin: 20px auto 0px;
     width: 90%;
     background-color: white;
-    display: flex;
-    justify-content: space-around;
     border-radius: 15px;
     box-shadow: 0 0 8px #B0C4DE;
     padding: 20px;
+    display: flex;
+    justify-content: space-around;
 }
 .section1 {
     width: 30%;

@@ -5,11 +5,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0px auto; 
 }
-
 .food_content {
-    margin: 20px auto 0px;
+    /* margin: 20px auto 0px; */
     width: 45%;
     background-color: white;
     border-radius: 15px;
