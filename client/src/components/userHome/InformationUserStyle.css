@@ -36,8 +36,8 @@
     align-items: center;
     float: right;
 }
-.column_2 p {
-    margin: 10px 20px;
+.large_text {
+    margin: 4px;
 }
 .icon_table {
     width: 20px;
@@ -93,10 +93,6 @@
         width: 15px;
         height: 15px;
         margin: 10px;
-    }
-    .user_info_body p {
-        font-size: 14px;
-        margin: 5px 10px;
     }
     .user_details_table tr {
         height: 40px;

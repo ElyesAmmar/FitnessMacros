@@ -35,12 +35,12 @@ function  UserInfo() {
                     </div>
                     <div className='user_information_child'>
                         <h1>{user.username}</h1>
-                        <p>{age()} ans</p> 
+                        <p className='large_text'>{age()} ans</p> 
                         <table className='user_details_table'>
                             <tr>
-                                <td className='column_1'>Objectif: </td>
+                                <td className='column_1'><p className='large_text'>Objectif:</p> </td>
                                 <td className='column_2'>
-                                    <p>
+                                    <p className='large_text'>
                                         {user.goal === 'weight loss'? ' Perte de poids' : '' }
                                         {user.goal === 'extreme weight loss'? ' Perte de poids extrême' : '' }
                                         {user.goal === 'maintenance'? ' Maintien du poids' : '' }
@@ -50,23 +50,31 @@ function  UserInfo() {
                                 </td>
                             </tr>
                             <tr>
-                                <td className='column_1'>Poid: </td>
-                                <td className='column_2'><p>{user.weight}kg</p></td>
+                                <td className='column_1'>
+                                    <p className='large_text'>Poid: </p>
+                                </td>
+                                <td className='column_2'>
+                                    <p className='large_text'>{user.weight}kg</p>
+                                </td>
                             </tr>
                         </table>    
                     </div>
                 </div>
                 <table className='user_details_table'>
                     <tr>
-                        <td className='column_1'>Nom d'utilisateur</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Nom d'utilisateur</p>
+                        </td>
                         <td className='column_2'>
-                            <p>{user.email}</p></td>
+                            <p className='large_text'>{user.email}</p></td>
                         </tr>
                         <tr>
-                            <td className='column_1'>Mot de passe</td>
+                            <td className='column_1'>
+                                <p className='large_text'>Mot de passe</p>
+                            </td>
                             <td className='column_2'>
-                                <p>***********</p>
-                                <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({username: user.username})}}>
+                                <p className='large_text'>***********</p>
+                                <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({password: user.password})}}>
                                     <img  className='icon_table' src={icon} alt="Icon"/>
                                 </div>
                             </td>
@@ -80,36 +88,44 @@ function  UserInfo() {
                 <h2>Détails</h2>
                 <table className='user_details_table'>
                     <tr>
-                        <td className='column_1'>Nom d'utilisateur</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Nom d'utilisateur</p>
+                        </td>
                         <td className='column_2'>
-                            <p>{user.username}</p>
+                            <p className='large_text'>{user.username}</p>
                             <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({username: user.username})}}>
                                 <img  className='icon_table' src={icon} alt="Icon"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td className='column_1'>Poids actuel</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Poids actuel</p>
+                        </td>
                         <td className='column_2'>
-                            <p>{user.weight}</p>
+                            <p className='large_text'>{user.weight}</p>
                             <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({weight: user.weight})}}>
                                 <img  className='icon_table' src={icon} alt="Icon"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td className='column_1'>Taille</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Taille</p>
+                        </td>
                         <td className='column_2'>
-                            <p>{user.height}</p>
+                            <p className='large_text'>{user.height}</p>
                             <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({height: user.height})}}>
                                 <img  className='icon_table' src={icon} alt="Icon"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td className='column_1'>Objectif</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Objectif</p>
+                        </td>
                         <td className='column_2'>
-                            <p>
+                            <p className='large_text'>
                                 {user.goal === 'weight loss'? 'Perte de poids' : '' }
                                 {user.goal === 'extreme weight loss'? 'Perte de poids extrême' : '' }
                                 {user.goal === 'maintenance'? 'Maintien du poids' : '' }
@@ -122,27 +138,33 @@ function  UserInfo() {
                         </td>
                     </tr>
                     <tr>
-                        <td className='column_1'>Date de naissance</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Date de naissance</p>
+                        </td>
                         <td className='column_2'>
-                            <p>{user.date_of_birth}</p>
+                            <p className='large_text'>{user.date_of_birth}</p>
                             <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({date_of_birth: user.date_of_birth})}}>
                                 <img  className='icon_table' src={icon} alt="Icon"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td className='column_1'>Sexe</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Sexe</p>
+                        </td>
                         <td className='column_2'>
-                            <p>{user.gender}</p>
+                            <p className='large_text'>{user.gender}</p>
                             <div className='button_update' onClick={()=> {setShowModal(true); setEditingUser({gender: user.gender})}}>
                                 <img  className='icon_table' src={icon} alt="Icon"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td className='column_1'>Niveau d'activité</td>
+                        <td className='column_1'>
+                            <p className='large_text'>Niveau d'activité</p>
+                        </td>
                         <td className='column_2'>
-                            <p>
+                            <p className='large_text'>
                                 {user.activity === 'sedentary'? 'Sédentaire' : '' }
                                 {user.activity === 'lightly active'? 'légèrement actif' : '' }
                                 {user.activity === 'moderatly active'? 'Modérément actif' : '' }

@@ -26,7 +26,7 @@ function Login() {
   }
   const signIn = () => {
     dispatch(login(user));
-    navigate('/dailynutrition');
+    navigate('/daily-nutrition');
   }
  
   return (
@@ -39,8 +39,8 @@ function Login() {
           {/* <Modal.Title>Accés membres</Modal.Title> */}
         </Modal.Header>
         <Modal.Body>
-         <form className='form_groups' style={{textAlign: 'center'}} onSubmit={signIn} >
-            <h5 style={{textAlign: 'center'}}>Accés membres</h5>
+         <form className='form_groups_center' onSubmit={signIn} >
+            <h5>Accés membres</h5>
             <div className='form_control'>
               <input className='email_input' type="email" name="email" value={user.email} placeholder='Adresse e-mail' onChange={handleInput}/>
               <div className='password_input' >

@@ -36,11 +36,11 @@ function Food() {
 
     return (
       <div className='food_body'>
-        <div className="food_content">
-            {Object.values(nutrients).length > 0 &&
-            <NutritionFact nutrients={nutrients} sum={sum} /> 
-            }
-        </div>
+        {Object.values(nutrients).length > 0 &&
+            <div className="food_content">
+                <NutritionFact nutrients={nutrients} sum={sum} /> 
+            </div>
+        }
         <div className="food_content">
                 <div>
                     <h4>Infos nutritionnelles de l'aliment</h4>

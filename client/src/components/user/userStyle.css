@@ -7,6 +7,12 @@
     width: 100%;
     padding: 10px;
 }
+.form_groups_center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .form_control {
     /* margin-bottom: 30px; */
@@ -73,7 +79,7 @@
 .toggle-password {
     position: absolute;
     top: 45%;
-    right: 50px; 
+    right: 10px; 
     transform: translateY(-50%);
     color: gray;
     cursor: pointer;

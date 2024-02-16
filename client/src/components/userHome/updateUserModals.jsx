@@ -12,10 +12,14 @@ function UpdateUserModal({showModal, setShowModal, editingUser, setEditingUser, 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  const [visible, setVisible] = useState(false);
   let regex = /^\d{4}-\d{2}-\d{2}$/;
   const style = {
     borderColor: 'red'
   }
+  const toggleVisibility = () => {
+    setVisible(!visible);
+};
   const handleClose = () => setShowModal(false);
   const HandleInput = (e) => setEditingUser({[e.target.name]: e.target.value});
   const HandleButton = (e) => {
@@ -54,8 +58,33 @@ const handleUpdate = () => {
     <div>
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Body>
+          {editingUser.password && 
+            <form className='form_groups_center'>
+              <h5>Mettre à jour votre password</h5>
+              <div className='form_control'>
+                <div className='password_input' >
+                  <input type={visible ? 'email' : 'password'} name="password" placeholder='Ancien mot de passe'/>
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={toggleVisibility}>
+                    {visible ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+                <div className='password_input' >
+                  <input type={visible ? 'email' : 'password'} name="password" placeholder='Nouveau mot de passe'/>
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={toggleVisibility}>
+                    {visible ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </div>
+            </form>
+          }
           {editingUser.username && 
-            <form className='form_groups'>
+            <form className='form_groups_center'>
               <h5>Nom d'utilisateur</h5>
               <div className='form_control'>
                 <input className='medium_input' type="text" name="username" value={editingUser.username} placeholder='Prenom' onChange={HandleInput} style={errors.username ? style : {}}></input>
@@ -64,7 +93,7 @@ const handleUpdate = () => {
             </form> 
           }
           {editingUser.gender && 
-            <form className='form_groups'>
+            <form className='form_groups_center'>
               <h5>Sexe</h5>
               <div className='form_control' style={{display:'flex'}}>
                 <input type="radio" value="male" name="gender" checked={editingUser.gender === "male"} onClick={HandleInput}></input>
@@ -76,7 +105,7 @@ const handleUpdate = () => {
             </form>
           }
           {editingUser.date_of_birth && 
-            <form className='form_groups'>
+            <form className='form_groups_center'>
               <h5>Datte de naissance</h5>
               <div className='form_control'>
                   <input type="date" className='small_input' value={editingUser.date_of_birth} name="date_of_birth" onChange={HandleInput}></input>
@@ -85,7 +114,7 @@ const handleUpdate = () => {
               </form>
           }
           {editingUser.weight && 
-            <form className='form_groups'>
+            <form className='form_groups_center'>
               <h5>Mettre à jour le poids</h5>
               <div className='form_control'>
                 <div className='physique_input'>
@@ -97,7 +126,7 @@ const handleUpdate = () => {
             </form>
           }
           {editingUser.height &&
-            <form className='form_groups'>
+            <form className='form_groups_center'>
               <h5>Mettre à jour la taille</h5>
               <div className='form_control'>
                 <div className='physique_input'>
