@@ -1,4 +1,4 @@
-import { USER_LOGIN, USER_REGISTER, USER_GET_AUTH, USER_LOGOUT } from '../constant/actionsTypes'
+import { USER_LOGIN, USER_REGISTER, USER_GET_AUTH, USER_LOGOUT, UPDATE_USER, LOAD_UPDATE_USER, DELETE_USER } from '../constant/actionsTypes'
 import axios from 'axios'
 
 export const register = (user) => async(dispatch) => {
@@ -42,13 +42,45 @@ export const getUser = () => async(dispatch) =>{
                 payload: user.data.response
             })
         }
-        
+    } catch (error) {
+        console.log(error);
+        alert(error.response.data);
+    }
+}
+export const updateUser = (id,data) => async(dispatch) => {
+    dispatch(loadUpdateUser());
+    
+    console.log(id,data);
+    try {
+        const response = await axios.put(`http://localhost:7001/api/users/update/${id}`, data);
+        dispatch({
+            type: UPDATE_USER,
+            payload: response.data
+        })
+        dispatch(getUser());
+    } catch (error) {
+        console.log(error);
+        alert(error.response.data);
+    }
+}
+export const deleteUser = (id) => async(dispatch) => {
+    try {
+        const response = await axios.delete(`http://localhost:7001/api/users/delete/${id}`);
+        dispatch({
+            type: DELETE_USER,
+            payload: response.data
+        })
     } catch (error) {
         console.log(error);
         alert(error.response.data);
     }
 }
 
+export const loadUpdateUser = () => {
+    return({
+        type: LOAD_UPDATE_USER
+    })
+}
 export const logOut = () => {
     return ({
         type: USER_LOGOUT

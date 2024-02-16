@@ -81,7 +81,7 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
         setUser({});
         setPage(1)
         handleClose();
-        navigate('/dailynutrition');
+        navigate('/daily-nutrition');
       }
     }
     
@@ -150,7 +150,7 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
               <button type="button" className="big_buttons" value="maintenance" onClick={HandleButton} autoFocus={user.goal === "maintenance"}>
                   Maintien du poids
               </button>
-              <button type="button" className="big_buttons" value="muscle gain" onClick={HandleButton} autoFocus={user.goal === "weight loss"}>
+              <button type="button" className="big_buttons" value="muscle gain" onClick={HandleButton} autoFocus={user.goal === "muscle gain"}>
                   Prise de poids de 0,5kg par semaine
               </button>
               <button type="button" className="big_buttons" value="extreme muscle gain" onClick={HandleButton} autoFocus={user.goal === "extreme muscle gain"}>

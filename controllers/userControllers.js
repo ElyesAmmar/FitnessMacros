@@ -68,6 +68,12 @@ exports.update = async(req, res) => {
     try {
         const id = req.params.id
         const request = req.body
+        if (request.weight) {
+            request.weight = parseFloat(request.weight, 10);
+          }
+          if (request.height) {
+            request.height = parseFloat(request.height, 10);
+          }
         let result = await User.update({...request}, {
             where: {
               id: id

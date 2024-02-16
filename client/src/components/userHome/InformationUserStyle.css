@@ -1,0 +1,106 @@
+.user_info_body {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #EBECE4;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.user_info_content {
+    width: 48%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #B0C4DE;
+    padding: 20px;
+    margin: 10px;
+}
+.user_information {
+    display: flex;
+    justify-content: space-around;
+}
+.user_information_child {
+    width: 48%;
+}
+
+.user_details_table {
+    width: 100%;
+    margin: 5px;
+}
+.user_details_table tr {
+    height: 50px
+}
+
+.column_2 {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    float: right;
+}
+.column_2 p {
+    margin: 10px 20px;
+}
+.icon_table {
+    width: 20px;
+    height: 20px;
+    margin: 15px;
+    color: #228B22;
+}
+.user_details_table tr:not(:first-child)  {
+    border-top: 1px  solid #EBECE4;
+}
+
+.button_update:hover {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+
+.buttons_user_info {
+    display: flex;
+    justify-content: center;
+}
+.delete_button {
+    margin-left: 20px auto;
+    width: 80%;
+    height: 40px;
+    font-weight: 500;
+    color: #D80000;
+    background-color: white;
+    border: 1px solid #D80000;
+    border-radius: 10px;
+}
+.delete_button:hover {
+    background-color: #D80000;
+    color: white;
+}
+
+@media screen and (max-width: 1300px) {
+    .user_info_body {
+      width: 100%;
+    }
+  }
+@media screen and (max-width: 1000px) {
+    .food_body {
+      width: 100%;
+    }
+    .user_info_content {
+      width: 90%;
+      flex-direction: column;
+    }
+    
+}
+@media screen and (max-width: 600px) {
+    .icon_table {
+        width: 15px;
+        height: 15px;
+        margin: 10px;
+    }
+    .user_info_body p {
+        font-size: 14px;
+        margin: 5px 10px;
+    }
+    .user_details_table tr {
+        height: 40px;
+        width: 100%;
+    }
+    
+}
