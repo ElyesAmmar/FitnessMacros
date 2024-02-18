@@ -97,6 +97,9 @@
     
 }
 @media screen and (max-width: 600px) {
+    .user_info_content {
+        padding: 10px;
+    }
     .icon_table {
         width: 15px;
         height: 15px;

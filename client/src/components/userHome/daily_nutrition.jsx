@@ -8,7 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 function DailyNutrition () {
 
     const dailyNutrition  = useSelector((state)=> state.dailyNutritionReducer.dailyNutrition);
-    console.log(dailyNutrition);
+
     return (
         <div className='daily_nutrition_body'>
             <div className='daily_nutrition_content'>
@@ -20,10 +20,10 @@ function DailyNutrition () {
                 </div>
                 <div className='section2'>
                     <div className='macros_nutritions'>
-                        <h6 className='nutritional_values'>Glucides</h6>
+                        <h6 className='nutritional_title'>Glucides</h6>
                         <div className='nutritional_values_block'>
                             <div className='nutritional_values_bar'>
-                                <ProgressBar  variant="primary" now={40} />
+                                <progress value={75} max={100} />
                             </div>
                             <div className='nutritional_values_value'>
                                 <p className='nutritional_values'>{dailyNutrition.carbohydrates}g </p>
@@ -34,10 +34,10 @@ function DailyNutrition () {
                         </div>
                     </div>
                     <div className='macros_nutritions'>
-                        <h6 className='nutritional_values'>Protéines</h6>
+                        <h6 className='nutritional_title'>Protéines</h6>
                         <div className='nutritional_values_block'>
                             <div className='nutritional_values_bar'>
-                                <ProgressBar variant="warning" now={40} />
+                            <progress value={75} max={100} />
                             </div>
                             <div className='nutritional_values_value'>
                                 <p className='nutritional_values'>{dailyNutrition.protein}g</p> 
@@ -50,10 +50,10 @@ function DailyNutrition () {
                         
                     </div>
                     <div className='macros_nutritions'>
-                        <h6 className='nutritional_values'>Graisses</h6>
+                        <h6 className='nutritional_title'>Graisses</h6>
                         <div className='nutritional_values_block'>
                             <div className='nutritional_values_bar'>
-                                <ProgressBar variant="danger" now={40} />
+                                <progress value={75} max={100} />
                             </div>
                             <div className='nutritional_values_value'>
                                 <p className='nutritional_values'>{dailyNutrition.fat}g</p> 

@@ -27,7 +27,7 @@ function  UserInfo() {
                         <img src='https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg' alt='image'></img>
                     </div>
                     <div className='user_information_child'>
-                        <h1>{user.username}</h1>
+                        <h3>{user.username}</h3>
                         <p className='large_text'>{age()} ans</p> 
                         <table className='user_details_table'>
                             <tr>
@@ -74,11 +74,15 @@ function  UserInfo() {
                         </tr>
                 </table>
                 <div className='buttons_user_info'>
-                    <button className='delete_button'>Supprimer le compte</button>
+                    <button 
+                        className='delete_button' 
+                        onClick={()=> {setShowModal(true); setEditingUser({delete: true})}}
+                    >Supprimer le compte
+                    </button>
                 </div>
             </div> 
             <div className='user_info_content'>
-                <h2>Détails</h2>
+                <h3>Détails</h3>
                 <table className='user_details_table'>
                     <tr>
                         <td className='column_1'>
@@ -172,7 +176,6 @@ function  UserInfo() {
                 </table>
             </div>
             <UpdateUserModal 
-                setEditingUser={setEditingUser} 
                 showModal={showModal} 
                 setShowModal={setShowModal} 
                 editingUser={editingUser} 

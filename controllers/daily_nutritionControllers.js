@@ -25,7 +25,7 @@ exports.postNutrition = async(req, res) => {
             "extreme weight loss": [-500, {carbohydrates: 0.3, protein: 0.4, fat: 0.3}],
             "maintenance": [0, {carbohydrates: 0.5, protein: 0.25, fat: 0.25}],
             "muscle gain": [250, {carbohydrates: 0.55, protein: 0.2, fat: 0.25}],
-            "extreme muscle gain": [500, {carbohydrates: 0.6, protein: 0.2, fat: 0.2}]
+            "extreme muscle gain": [500, {carbohydrates: 0.55, protein: 0.2, fat: 0.25}]
         }
         for (let key in goals) {
             if (key === user.goal) {

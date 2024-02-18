@@ -2,6 +2,7 @@ import { USER_LOGIN, USER_REGISTER, USER_GET_AUTH, USER_LOGOUT, UPDATE_USER, LOA
 import axios from 'axios';
 import { getUserNutrition } from './dailyNutrition';
 
+
 export const register = (user) => async(dispatch) => {
     try {
         console.log('user from reducer', user);

@@ -1,13 +1,17 @@
 import './updateUserStyle.css'
 import { useState, useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
-import { updateUser } from '../../JS/actions/user';
+import { logOut, updateUser } from '../../JS/actions/user';
+import { deleteUser } from '../../JS/actions/user';
+
 
 
 function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [visible, setVisible] = useState(false);
@@ -18,7 +22,7 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
   useEffect(()=> {
     setUpdatedUser(editingUser)
   },[editingUser]);
-
+  console.log(updatedUser);
   const toggleVisibility = () => {
     setVisible(!visible);
   };
@@ -31,7 +35,7 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
   
   const regexDate = /^\d{4}-\d{2}-\d{2}$/;
   const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
-  console.log(!passwordRegex.test(updatedUser.password));
+  
   const handleUpdate = () => {
   const error = {};
   if (editingUser.weight && (updatedUser.weight < 20 || updatedUser.weight > 500)) {
@@ -64,7 +68,13 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
     dispatch(updateUser(userId, updatedUser));
     handleClose();
   }
-}
+  }
+  const Delete = () => {
+    dispatch(logOut());
+    dispatch(deleteUser(userId));
+    handleClose();
+    navigate('/');
+  }
   return (
     <div>
       <Modal show={showModal} onHide={handleClose}>
@@ -206,10 +216,22 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
               {errors.activity && <p style={{fontSize: '12px', color: 'red', marginLeft:'40px'}}>{errors.activity}</p>}
             </div>
           }
+          {editingUser.delete &&
+            <div className='form_groups_center'>
+                <h5 style={{textAlign:"center"}}>Supprimer le compte</h5>
+                <p style={{textAlign:"center", width: '90%', margin:'10px'}}>
+                  Avant de continuer, vous devez savoir que la suppression du compte est définitive. 
+                  Veuillez cliquer sur Continuer ci-dessous pour supprimer votre compte.
+                </p>
+            </div>
+          }
         </Modal.Body>
         <Modal.Footer>
             <button className='secondary_outline_btn' onClick={handleClose} >Annuler</button>
-            <button className='primary_btn' onClick={handleUpdate}>Enregistrer</button>
+            {editingUser.delete? 
+              <button className='primary_btn' onClick={Delete}>Continuer</button> :
+              <button className='primary_btn' onClick={handleUpdate}>Enregistrer</button>
+            } 
         </Modal.Footer>
       </Modal>
     </div>
