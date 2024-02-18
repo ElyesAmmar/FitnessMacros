@@ -66,20 +66,29 @@ exports.login = async(req, res) => {
 
 exports.update = async(req, res) => {
     try {
-        const id = req.params.id
-        const request = req.body
+        const id = req.params.id;
+        const request = req.body;
         if (request.weight) {
             request.weight = parseFloat(request.weight, 10);
-          }
-          if (request.height) {
+        }
+        if (request.height) {
             request.height = parseFloat(request.height, 10);
-          }
+        }
+        if (request.password) {
+            const user = await  User.findByPk(id);
+            const isMatch = await bcrypt.compare(request.password, user.password );
+            if (!isMatch) {
+                return res.status('400').send({msg: "password don't match to your old password"});
+            }
+        }
         let result = await User.update({...request}, {
             where: {
               id: id
             }
         });
-        return res.status(200).send({msg: "update user successfully"});
+        const user = await User.findByPk(id);
+        
+        return res.status(200).send({msg: "update user successfully", user: user});
 
     } catch (error) {
         console.log(error);

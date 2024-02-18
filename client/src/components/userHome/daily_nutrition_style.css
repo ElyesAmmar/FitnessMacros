@@ -99,6 +99,13 @@
     .nutritional_values_value {
         width: 100%;
     }
+    .nutritional_values {
+        font-size: 14px;
+    }
+    .nutritional_values_range {
+        font-size: 10px;
+        font-weight:600;
+    }
     .section1 {
         width: 70%;
         margin: 0 auto;

@@ -31,13 +31,14 @@ function Register() {
     setUser({...user, goal: goal});
 }
 const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
 
   const handleNext = () => {
     const error = {};
-    if (page === 1 && !user.weight || user.weight < 20 || user.weight > 500) {
+    if (page === 1 && (!user.weight || user.weight < 20 || user.weight > 500)) {
       error.weight = "Veuillez saisir un poids valide entre 20 et 500";
     }
-    if (page === 1 && !user.height || user.height < 66 || user.height > 241) {
+    if (page === 1 && (!user.height || user.height < 66 || user.height > 241)) {
       error.height = "Veuillez saisir un hauteur valide entre 66 & 241";
     } 
     if (page === 1 && !user.username) {
@@ -55,16 +56,11 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
     if (page === 3 && !user.activity) {
       error.activity = "Veuillez selectionner un choix";
     }
-    if (page === 4 && !user.email || page === 4 & emailRegex.test(user.email) === false) {
+    if (page === 4 && (!user.email || page === 4 & emailRegex.test(user.email) === false)) {
       error.email = 'Veuillez saisir une adresse mail valide.';
     }
-    if (page === 4 && !user.password ) {
-      error.password = 'Veuillez saisir un mot de passe valide.';
-    }
-    else if (user.password) {
-      if (user.password.length < 10) {
-        error.password = 'Le mot de passe doit comporter au moins 10 caractères.';
-      }
+    if (page === 4 && (!user.password  || (!passwordRegex.test(user.password)))) {
+      error.password = 'Le mot de passe doit comporter au moins 8 caractères et inclure à la fois des lettres et des chiffres.';
     }
     if (Object.values(error).length > 0) {
       setErrors(error)
@@ -100,12 +96,12 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
         <Modal.Body>
           {page === 1 && 
             <form className='form_groups'>
-              <h5>Veuillez saisisez votre Prenom et Nom</h5>
+              <h6>Veuillez saisisez votre Prenom et Nom</h6>
               <div className='form_control'>
                 <input className='medium_input' type="text" name="username" value={user.username} placeholder='Prenom' onChange={HandleInput} style={errors.username ? style : {}}></input>
                 {errors.username && <p style={{fontSize: '12px', color: 'red'}}>{errors.username}</p>}
               </div>
-              <h5>Veuillez sélectionner votre sexe pour que nous puissions calculer vos besoins caloriques.</h5>
+              <h6>Veuillez sélectionner votre sexe pour que nous puissions calculer vos besoins caloriques.</h6>
               <div className='form_control' style={{display:'flex'}}>
                 <input type="radio" value="male" name="gender" checked={user.gender === "male"} onClick={HandleInput}></input>
                 <label style={{margin:'7px 8px'}}>Homme</label>
@@ -113,13 +109,13 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
                 <label style={{margin:'7px 8px'}}>Femme</label>
               </div>
               {errors.gender && <p style={{fontSize: '12px', color: 'red'}}>{errors.gender}</p>}
-              <h5>Quelle est votre date de naissance ?</h5>
+              <h6>Quelle est votre date de naissance ?</h6>
               <div className='form_control'>
                   <input type="date" className='small_input' value={user.date_of_birth} name="date_of_birth" onChange={HandleInput}></input>
                   {errors.date_of_birth && <p style={{fontSize: '12px', color: 'red'}}>{errors.date_of_birth}</p>}
               </div>
-              <h5>Combien pesez-vous et mesurez-vous ?</h5>
-              <p>Vous pouvez indiquer une estimation de poids et mettre cette information à jour plus tard.</p>
+              <h6>Combien pesez-vous et mesurez-vous ?</h6>
+              <p className='medium_text'>Vous pouvez indiquer une estimation de poids et mettre cette information à jour plus tard.</p>
               <div className='form_control'>
                 <div className='weight_height_input'>
                   <div className='physique_input'>
@@ -140,7 +136,7 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
           }
           {page === 2 &&
             <div>
-              <h5 style={{textAlign:"center"}}>Quel est votre objectif ?</h5>
+              <h6 style={{textAlign:"center"}}>Quel est votre objectif ?</h6>
               <button type="button" className="big_buttons" value='weight loss' onClick={HandleButton} autoFocus={user.goal === "weight loss"}>
                   Perte de poids de 0,25kg par semaine
               </button>
@@ -161,7 +157,7 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
           }
           {page === 3 &&
             <div>
-              <h5 style={{textAlign:"center"}}>Quel est votre objectif ?</h5>
+              <h6 style={{textAlign:"center"}}>Quel est votre objectif ?</h6>
               <button type="button" className="big_buttons" onClick={()=> {setUser({...user,activity:"sedentary"})}} autoFocus={user.activity === "sedentary" }>
                 <h6>Sédentaire</h6>
                 <p className='medium_text' style={{color:'gray'}}>Peu ou pas d'exercice</p>
@@ -188,7 +184,7 @@ const emailRegex =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
           {page === 4 && 
             <div>
               <form className='form_groups'>
-                <h5>Vous y êtes presque ! Créez votre compte.</h5>
+                <h6>Vous y êtes presque ! Créez votre compte.</h6>
                 <div className='form_control'>
                     <input className='email_input' type="email" name="email" value={user.email} placeholder='Adresse e-mail' onChange={HandleInput}></input>
                     {errors.email && <p style={{fontSize:'12px', color: 'red'}}>{errors.email}</p>}

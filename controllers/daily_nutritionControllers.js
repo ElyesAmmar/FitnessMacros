@@ -42,8 +42,6 @@ exports.postNutrition = async(req, res) => {
         
         let TDEE = BMR * activtyFactor + goalCalories;
         TDEE = Math.round(TDEE);
-        console.log(goalCalories);
-        console.log(macrosNutrimentRatios);
         
         let Carbohydrates = Math.round((TDEE * macrosNutrimentRatios.carbohydrates) / 4);
         let Protein = Math.round(TDEE * macrosNutrimentRatios.protein / 4);

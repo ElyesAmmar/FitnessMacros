@@ -1,5 +1,6 @@
 import { USER_LOGIN, USER_REGISTER, USER_GET_AUTH, USER_LOGOUT, UPDATE_USER, LOAD_UPDATE_USER, DELETE_USER } from '../constant/actionsTypes'
-import axios from 'axios'
+import axios from 'axios';
+import { getUserNutrition } from './dailyNutrition';
 
 export const register = (user) => async(dispatch) => {
     try {
@@ -53,11 +54,13 @@ export const updateUser = (id,data) => async(dispatch) => {
     console.log(id,data);
     try {
         const response = await axios.put(`http://localhost:7001/api/users/update/${id}`, data);
+        const userNutritionRes = await axios.post('http://localhost:7001/api/daily_nutrition/post', response.data.user);
         dispatch({
             type: UPDATE_USER,
-            payload: response.data
+            payload: response.data.msg
         })
         dispatch(getUser());
+        dispatch(getUserNutrition(id));
     } catch (error) {
         console.log(error);
         alert(error.response.data);

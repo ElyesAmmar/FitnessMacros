@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    
 }
 .user_info_content {
     width: 48%;
@@ -21,7 +22,14 @@
 .user_information_child {
     width: 48%;
 }
-
+.user_information_child:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user_information_child img {
+    width: 70%;
+}
 .user_details_table {
     width: 100%;
     margin: 5px;
@@ -78,13 +86,13 @@
       width: 100%;
     }
   }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
     .food_body {
       width: 100%;
     }
     .user_info_content {
       width: 90%;
-      flex-direction: column;
+      /* flex-direction: column; */
     }
     
 }
@@ -97,6 +105,22 @@
     .user_details_table tr {
         height: 40px;
         width: 100%;
+    }
+    .user_information_child:first-child {
+        width: 40%;
+        padding: 5px;
+    }
+    .user_information_child img {
+        width: 100%;
+    }
+    .user_information_child {
+        width: 60%;
+    }
+    .column_2 {
+        margin-bottom: 0;
+    }
+    .delete_button {
+        font-size: 13px;
     }
     
 }

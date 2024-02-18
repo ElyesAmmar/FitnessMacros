@@ -37,7 +37,6 @@ body {
     border-radius: 10px;
 }
 
-
 .primary_btn:hover {
     background-color: #1a6d1a;
     color: white;
@@ -65,7 +64,7 @@ input[type="date"] {
     border: 1px solid #DCDCDC;
     width: 300px;
     height: 50px; 
-    border-radius: 5px;
+    border-radius: 15px;
     letter-spacing: 5px;
     padding-left: 20px;
     padding-right: 15px;
@@ -74,8 +73,8 @@ input[type="text"]  {
     border: 1px solid #DCDCDC;
     width: 300px;
     height: 50px; 
-    border-radius: 5px;
-    padding: 4px 5px;
+    border-radius: 15px;
+    padding: 4px 10px;
     margin: 5px 2px;
     
 }
@@ -83,16 +82,16 @@ input[type="number"] {
     border: 1px solid #DCDCDC;
     width: 180px;
     height: 50px; 
-    border-radius: 5px;
-    padding: 4px 5px;
+    border-radius: 15px;
+    padding: 4px 10px;
 }
 
 input[type="email"], input[type="password"] {
     border: 1px solid #DCDCDC;
     width: 400px;
     height: 50px; 
-    border-radius: 5px;
-    padding: 4px 5px;
+    border-radius: 15px;
+    padding: 4px 10px;
     margin: 5px 2px;
 }
   
@@ -105,7 +104,8 @@ input[type="button"]:focus {
 }
 
 .medium_text {
-    font-size: 14px;
+    font-size: 13px;
+    margin:0;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -117,6 +117,9 @@ input[type="number"]::-webkit-outer-spin-button {
     input[type="text"], input[type="date"],
     input[type="email"], input[type="password"] {
         width: 250px;
+    }
+    button {
+        font-size: 14px;
     }
     .large_text {
         font-size: 13px;

@@ -72,8 +72,8 @@ function Food() {
                             .sort((a,b)=> a.name_fr.length - b.name_fr.length)
                             .map((el)=>
                                 <div key={el.id} className='element_food' onClick={()=>{selectFood(el)}} >
-                                    <h6 style={{margin:'2px'}}>{el.name_fr}</h6>
-                                    <p style={{fontSize: '13px', margin:'0'}}>Calories: {el.calories} kcal</p>
+                                    <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
+                                    <p className='medium_text'>Calories: {el.calories} kcal</p>
                                     <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
                                 </div>
                             )}

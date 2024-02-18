@@ -21,17 +21,10 @@ function  UserInfo() {
     
     return (
         <div className='user_info_body'>
-            <UpdateUserModal 
-                setEditingUser={setEditingUser} 
-                showModal={showModal} 
-                setShowModal={setShowModal} 
-                editingUser={editingUser} 
-                userId= {user.id}
-            />
             <div className='user_info_content'>
                 <div className='user_information'>
                     <div className='user_information_child'>
-                        <img src='' alt='image'></img>
+                        <img src='https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg' alt='image'></img>
                     </div>
                     <div className='user_information_child'>
                         <h1>{user.username}</h1>
@@ -63,7 +56,7 @@ function  UserInfo() {
                 <table className='user_details_table'>
                     <tr>
                         <td className='column_1'>
-                            <p className='large_text'>Nom d'utilisateur</p>
+                            <p className='large_text'>E-mail</p>
                         </td>
                         <td className='column_2'>
                             <p className='large_text'>{user.email}</p></td>
@@ -178,6 +171,13 @@ function  UserInfo() {
                     </tr>
                 </table>
             </div>
+            <UpdateUserModal 
+                setEditingUser={setEditingUser} 
+                showModal={showModal} 
+                setShowModal={setShowModal} 
+                editingUser={editingUser} 
+                userId= {user.id}
+            />
         </div>
         
     )
