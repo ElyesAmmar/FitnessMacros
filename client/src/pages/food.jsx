@@ -12,6 +12,7 @@ function Food() {
     const isLoading = useSelector((state)=> state.foodReducer.isLoading);
     const [showList, setShowList] = useState(false);
     const [nutrients, setNutrients] = useState({});
+    const [inputValue, setInputValue] = useState('');
     // const [portion, setPortion] = useState('');
     const [sum, setSum] = useState(0);
    
@@ -20,14 +21,22 @@ function Food() {
     const handleInput = (e) => {
         e.preventDefault();
         setShowList(true);
+        setInputValue(e.target.value);
         if (e.target.value !== '') {
             dispatch(getFood(e.target.value));
-        } 
-        if (e.target.value === '') {
+        } else {
             setShowList(false);
         }
     }
-
+    const handleSubmit = (event) => {
+        event.preventDefault(); 
+        setShowList(true);
+        if (inputValue !== '') {
+            dispatch(getFood(inputValue));
+        } else {
+            setShowList(false);
+        }
+    }
     const selectFood = (food) => {
         setShowList(false);
         setNutrients(food); 
@@ -52,7 +61,7 @@ function Food() {
                                 <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <form onSubmit={handleInput}>
+                        <form onSubmit={handleSubmit}>
                             <input 
                                 style={{width: '100%', paddingLeft: '50px'}} 
                                 type='text' 
@@ -72,9 +81,20 @@ function Food() {
                             .sort((a,b)=> a.name_fr.length - b.name_fr.length)
                             .map((el)=>
                                 <div key={el.id} className='element_food' onClick={()=>{selectFood(el)}} >
-                                    <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
-                                    <p className='medium_text'>Calories: {el.calories} kcal</p>
-                                    <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
+                                    <div>
+                                        <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
+                                        <p className='medium_text'>Calories: {el.calories} kcal</p>
+                                        <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
+                                    </div>
+                                    <div className='favoris_icon'>
+                                        <input
+                                            value="favorite-button"
+                                            name="favorite-checkbox"
+                                            id="favorite"
+                                            checked="checked"
+                                            type="checkbox"
+                                        />
+                                    </div>
                                 </div>
                             )}
                         </div>

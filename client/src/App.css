@@ -53,8 +53,10 @@ body {
 }
 
 /* input style */
-
-input[type="radio"] {
+input {
+    background-color: #F4F4F4;
+}
+.input_radios {
     /* size: 100px; */
     margin:  10px;
     width: 20px;
@@ -78,7 +80,7 @@ input[type="text"]  {
     margin: 5px 2px;
     
 }
-input[type="number"] {
+.input_number {
     border: 1px solid #DCDCDC;
     width: 180px;
     height: 50px; 
@@ -108,8 +110,8 @@ input[type="button"]:focus {
     margin:0;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.input_number::-webkit-inner-spin-button,
+.input_number::-webkit-outer-spin-button {
     -webkit-appearance: none;
     display: none;
 }
@@ -124,7 +126,7 @@ input[type="number"]::-webkit-outer-spin-button {
     .large_text {
         font-size: 13px;
     }
-    input[type="number"] {
+    .input_number {
         width: 150px;
     }
     

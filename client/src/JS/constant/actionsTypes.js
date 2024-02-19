@@ -11,3 +11,5 @@ export const DELETE_USER = 'DELETE_USER';
 export const GET_DAILY_NUTRITION = 'GET_DAILY_NUTRITION';
 export const GET_FOOD_BY_NAME = 'GET_FOOD_BY_NAME';
 export const LOAD_FOOD = "LOAD_FOOD";
+export const SAVE_FOOD = "SAVE_FOOD";
+export const DELETE_FOOD = "DELETE_FOOD";

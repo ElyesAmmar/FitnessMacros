@@ -128,9 +128,9 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
             <form className='form_groups_center'>
               <h5>Sexe</h5>
               <div className='form_control' style={{display:'flex'}}>
-                <input type="radio" value="male" name="gender" checked={updatedUser.gender === "male"} onClick={HandleInput}></input>
+                <input type="radio" className='input_radios' value="male" name="gender" checked={updatedUser.gender === "male"} onClick={HandleInput}></input>
                 <label style={{margin:'7px 8px'}}>Homme</label>
-                <input type="radio" value="female" name="gender" checked={updatedUser.gender === "female"} onClick={HandleInput}></input>
+                <input type="radio" className='input_radios' value="female" name="gender" checked={updatedUser.gender === "female"} onClick={HandleInput}></input>
                 <label style={{margin:'7px 8px'}}>Femme</label>
               </div>
               {errors.gender && <p style={{fontSize: '12px', color: 'red'}}>{errors.gender}</p>}
@@ -150,7 +150,7 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
               <h5>Mettre à jour le poids</h5>
               <div className='form_control'>
                 <div className='physique_input'>
-                  <input className='small_input' type="number" name="weight" value={updatedUser.weight} onChange={HandleInput}></input>
+                  <input className='input_number' type="number" name="weight" value={updatedUser.weight} onChange={HandleInput}></input>
                   <span>kg</span>
                 </div>
               </div>
@@ -162,7 +162,7 @@ function UpdateUserModal({showModal, setShowModal, editingUser, userId}) {
               <h5>Mettre à jour la taille</h5>
               <div className='form_control'>
                 <div className='physique_input'>
-                  <input className='small_input' type="number" name="height" value={updatedUser.height} onChange={HandleInput}></input>
+                  <input className='input_number' type="number" name="height" value={updatedUser.height} onChange={HandleInput}></input>
                   <span>cm</span>
                 </div>
                 {errors.height && <p style={{fontSize: '12px', color: 'red',width:'45%'}}>{errors.height}</p>}

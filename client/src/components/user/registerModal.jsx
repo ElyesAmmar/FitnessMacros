@@ -103,15 +103,15 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
               </div>
               <h6>Veuillez sélectionner votre sexe pour que nous puissions calculer vos besoins caloriques.</h6>
               <div className='form_control' style={{display:'flex'}}>
-                <input type="radio" value="male" name="gender" checked={user.gender === "male"} onClick={HandleInput}></input>
+                <input type="radio" className='input_radios' value="male" name="gender" checked={user.gender === "male"} onClick={HandleInput}></input>
                 <label style={{margin:'7px 8px'}}>Homme</label>
-                <input type="radio" value="female" name="gender" checked={user.gender === "female"} onClick={HandleInput}></input>
+                <input type="radio" className='input_radios' value="female" name="gender" checked={user.gender === "female"} onClick={HandleInput}></input>
                 <label style={{margin:'7px 8px'}}>Femme</label>
               </div>
               {errors.gender && <p style={{fontSize: '12px', color: 'red'}}>{errors.gender}</p>}
               <h6>Quelle est votre date de naissance ?</h6>
               <div className='form_control'>
-                  <input type="date" className='small_input' value={user.date_of_birth} name="date_of_birth" onChange={HandleInput}></input>
+                  <input type="date" className='input_number' value={user.date_of_birth} name="date_of_birth" onChange={HandleInput}></input>
                   {errors.date_of_birth && <p style={{fontSize: '12px', color: 'red'}}>{errors.date_of_birth}</p>}
               </div>
               <h6>Combien pesez-vous et mesurez-vous ?</h6>
@@ -119,11 +119,11 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
               <div className='form_control'>
                 <div className='weight_height_input'>
                   <div className='physique_input'>
-                    <input className='small_input' type="number" name="weight" value={user.weight} onChange={HandleInput}></input>
+                    <input className='input_number' type="number" name="weight" value={user.weight} onChange={HandleInput}></input>
                     <span>kg</span>
                   </div>
                     <div className='physique_input'>
-                      <input className='small_input' type="number" name="height" value={user.height} onChange={HandleInput}></input>
+                      <input className='input_number' type="number" name="height" value={user.height} onChange={HandleInput}></input>
                       <span>cm</span>
                     </div><br/>
                   </div>

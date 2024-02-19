@@ -30,10 +30,18 @@
 .element_food {
   padding: 5px 0px 5px 15px;
   margin: 5px 2px;
-  
   border: 1px solid #E3E3E3;
   border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
 }
+.favoris_icon {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .element_food:hover {
   background-color: #E3E3E3;
   cursor: pointer;
