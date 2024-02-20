@@ -1,3 +1,5 @@
+/* daily nutrition style */
+
 .daily_nutrition_body {
     width: 1200px;
     margin: 0 auto;
@@ -7,7 +9,7 @@
     justify-content: center;
 }
 .daily_nutrition_content {
-    margin: 20px auto 0px;
+    margin: 20px auto 10px;
     width: 90%;
     background-color: white;
     border-radius: 15px;
@@ -45,7 +47,10 @@
 .nutritional_values_bar {
     width: 48%;
     height: 50px;
-    padding: 10px 10px;
+}
+.progress_bar {
+    margin: 20px 10px;
+    height: 14px;
 }
 .nutritional_values_bar progress {
     width: 100%;
@@ -69,11 +74,88 @@
     justify-content: space-between;
     width: 100%;
 }
+progress::-webkit-progress-value {
+    background-color: green; /* Change this color as needed */
+}
+/* meals style */
+.daily_meals {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: space-between;
+}
+.meals_sections {
+    width: 49%;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #B0C4DE;
+    padding: 20px;
+}
+
+.meals_sections_1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.meals_sections_1 div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.meals_sections_1 div img {
+    width: 40%;
+    height: 60px;
+    margin-right: 10px;
+}
+.meals_sections_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 1px solid  lightgray;
+    padding-top: 10px;
+}
+.meals_sections_2 h6 {
+    margin: 0;
+}
+.button_add {
+    border: 2px solid grey;
+    background-color: white;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    font-size: 15px;
+    position: relative;
+    &:after,
+	&:before {
+		content: "";
+		display: block;
+		background-color: grey;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+    &:before {
+		height: 18px;
+		width: 2px;
+	}
+
+	&:after {
+		height: 2px;
+		width: 18px;
+	}
+    
+}
+.button_add:hover {
+    background-color: rgb(218, 218, 218);
+}
 
 /* For screens between 600px and 900px */
 @media screen and (min-width: 600px) and (max-width: 900px) {
     .daily_nutrition_body {
-      width: 90%;
+        width: 90%;
     }
     .section1 {
         width: 50%;
@@ -81,17 +163,24 @@
     }
     .nutritional_values_bar {
         height: 50px;
-        padding: 15px 5px;
+        /* padding: 10px 3px; */
     }
-  }
-@media screen and (max-width: 1300px) {
-    .daily_nutrition_body {
-      width: 100%;
+    .progress_bar {
+        height: 10px;
+        margin: 20px 5px;
     }
 }
- @media screen and (max-width: 600px) {
+@media screen and (max-width: 1300px) {
     .daily_nutrition_body {
-      width: 100%;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .meals_sections {
+        width: 100%;
+    }
+    .daily_nutrition_body {
+        width: 100%;
     }
     .daily_nutrition_content {
         display: flex;
@@ -100,7 +189,10 @@
     .nutritional_values_bar {
         width: 100%;
         height: 20px;
-        padding: 2px;
+    }
+    .progress_bar {
+        height: 8px;
+        margin: 6px 3px;
     }
     .nutritional_values_value {
         width: 100%;
@@ -137,9 +229,9 @@
         display: flex;
         flex-direction: column;
     }   
-  }
-  @media screen and (max-width: 400px) {
+}
+@media screen and (max-width: 400px) {
     .section1 h1 {
         font-size: 20px;
     }
-  }
+}

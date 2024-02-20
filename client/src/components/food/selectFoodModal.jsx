@@ -2,10 +2,10 @@ import './selectFoodStyle.css'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import Modal from 'react-bootstrap/Modal';
-import breakfast from './icons/cereal.svg';
-import banana from './icons/banana.svg';
-import lunch from './icons/lunch.svg';
-import diner from './icons/diner.svg';
+import breakfast from '../../icons/cereal.svg';
+import banana from '../../icons/banana.svg';
+import lunch from '../../icons/lunch.svg';
+import diner from '../../icons/diner.svg';
 import { saveFood } from '../../JS/actions/food';
 
 
@@ -19,11 +19,11 @@ function SelectFood({selectedFood}) {
   console.log('selected food ', selectedFood);
   const savedFood = {
     servingSize: selectedFood.servingSize,
-    multiplier: selectedFood.multiplier,
-    calories: selectedFood.calories,
-    protein: selectedFood.calories,
-    carbohydrates: selectedFood.carbohydrates,
-    fat: selectedFood.fat
+    multiplier: parseFloat(selectedFood.multiplier),
+    calories: parseFloat(selectedFood.calories),
+    protein: parseFloat(selectedFood.protein),
+    carbohydrates: parseFloat(selectedFood.carbohydrates),
+    fat: parseFloat(selectedFood.fat)
   }
   const handleMeals = (meal) => {
     dispatch(saveFood(meal,savedFood));

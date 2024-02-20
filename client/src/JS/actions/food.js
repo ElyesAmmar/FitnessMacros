@@ -38,7 +38,7 @@ export const saveFood = (meal, food) => {
     })
 }
 export const deleteFood = (Meals, index) => {
-    let existingData = JSON.parse(localStorage.getItem(Meals)); 
+    let existingData = JSON.parse(localStorage.getItem('Meals')); 
     existingData.splice(index, 1);
     localStorage.setItem(Meals, JSON.stringify(existingData));
     return({
