@@ -63,21 +63,18 @@ function NutritionFact({sum,nutrients}) {
             return macrosNutritionG;
         }
     }
-    console.log(nutrients);
-    console.log(displayedMacros());
-   
+
     const percentage = (nutri) => {
         let percen = parseInt((nutri/sum)*100);
         return percen
     }
-   
-    console.log(displayedMacros());
+
     return (
         <>
             <div className='nutrition_fact_body'>
                 <div className='nutrition_fact_title'>
                     <h6 className='title_nutrition_fact'>{nutrients.name_fr}</h6>
-                    {isAuth && <SelectFood selectedFood={displayedMacros()} /> }
+                    {isAuth && <SelectFood selectedFood={displayedMacros()} nameFood={nutrients.name_fr} /> }
                 </div>
                 <div className='nutrition_fact'>
                     <div className='serving_size'>

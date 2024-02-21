@@ -10,6 +10,7 @@ import UserHome from './pages/userHome';
 import DailyNutrition from './components/userHome/daily_nutrition';
 import Food from './pages/food';
 import UserInfo from './components/userHome/InformationUser';
+import Meals from './components/userHome/meals';
 
 
 function App() {
@@ -17,8 +18,17 @@ function App() {
   const dispatch = useDispatch();
   const user  = useSelector((state)=> state.userReducer.user);
   const isAuth  = useSelector((state)=> state.userReducer.isAuth);
+  const consumes = JSON.parse(localStorage.getItem('Meals')); 
   
   useEffect(()=> {
+  if (!consumes) {
+    localStorage.setItem('Meals', JSON.stringify({ 
+      breakfast:[],
+      lunch: [],
+      dinner: [],
+      snacks: []
+    }));
+  }
     dispatch(getUser());
   },[]);
 
@@ -31,7 +41,9 @@ function App() {
         {/* <Route path='/' element={<Home />}></Route> */}
           <Route path='/food' element={<Food />} />
           <Route path='/' element={isAuth? <UserHome />  : <Home />}>
-            <Route path='/daily-nutrition' element={isAuth? <DailyNutrition /> : <Navigate to='/' />} />
+            <Route path='/daily-nutrition' element={isAuth? <DailyNutrition /> : <Navigate to='/' />}/>
+            <Route path='/daily-nutrition/food' element={<Food />} />
+            <Route path='/daily-nutrition/meals' element={<Meals />} />
             <Route path='/user-information' element= {isAuth? <UserInfo /> : <Navigate to='/' />} />
           </Route>
           

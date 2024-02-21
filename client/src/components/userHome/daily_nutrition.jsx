@@ -1,19 +1,26 @@
 import './daily_nutrition_style.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate} from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import breakfast from '../../icons/pancake.svg';
 import banana from '../../icons/banana.svg';
 import lunch from '../../icons/lunch.svg';
 import diner from '../../icons/diner.svg';
+import { getMealsData } from '../../JS/actions/dailyNutrition';
+import { useEffect } from 'react';
+import { getFoodDaily } from '../../JS/actions/dailyNutrition';
 
 
 function DailyNutrition () {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); 
     const dailyNutrition  = useSelector((state)=> state.dailyNutritionReducer.dailyNutrition);
-    const consumes = JSON.parse(localStorage.getItem('Meals')); 
-
+    const consumes = useSelector((state)=> state.dailyNutritionReducer.foodDaily); 
+    useEffect(()=> {
+        dispatch(getFoodDaily());
+    },[])
     const breakfastMacros = consumes.breakfast.reduce((accumulator, element)=> {
         accumulator.calories += element.calories;
         accumulator.carbohydrates += element.carbohydrates;
@@ -56,6 +63,24 @@ function DailyNutrition () {
         return accumulator;
     }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
 
+    const addFood = () => {
+        navigate('/daily-nutrition/food');
+    }
+    const openMeal = (name) => {
+        if (name === 'breakfast') {
+            dispatch(getMealsData({name, nameFr: 'Petit déjeuner', total: breakfastMacros, foods: consumes.breakfast}))
+        }
+        if (name === 'lunch') {
+            dispatch(getMealsData({name, nameFr: 'Déjeuner', total: lunchMacros, foods: consumes.lunch}))
+        }
+        if (name === 'dinner') {
+            dispatch(getMealsData({name, nameFr: 'Diner', total: dinnertMacros, foods: consumes.dinner}))
+        }
+        if (name === 'snacks') {
+            dispatch(getMealsData({name, nameFr: 'Snacks', total: snacksMacros, foods: consumes.snacks}))
+        }
+    }
+    console.log(breakfastMacros, lunchMacros, consumes.lunch);
     return (
         <div className='daily_nutrition_body'>
             <div className='daily_nutrition_content'>
@@ -66,7 +91,7 @@ function DailyNutrition () {
                             value={totalMacros.calories/dailyNutrition.calories*100} 
                             text={dailyNutrition.calories-totalMacros.calories}
                         /><br/>
-                        <h1 style={{textAlign: 'center'}}>KCAL</h1>
+                        <h2 style={{textAlign: 'center'}}>KCAL</h2>
                     </div>
                 </div>
                 <div className='section2'>
@@ -129,14 +154,20 @@ function DailyNutrition () {
                     </div>
                 </div>
             </div>
+            <h3 className='today_title'>LES REPAS D'AUJOURD'HUI</h3>
             <div className='daily_meals'>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div>
+                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('breakfast')}}>
                             <img src={breakfast} alt='breakfast'/>
-                            <h5>Petit Déjeuner</h5>
+                            <div className='meals_titles'>
+                                <h5>Petit Déjeuner</h5>
+                                {consumes.breakfast.map((el)=> 
+                                    <p className='medium_text'>{el.nameFood}</p>
+                                )}
+                            </div>
                         </div>
-                        <button className='button_add'></button>
+                        <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
                         <h6>{breakfastMacros.calories}{' Kcal'}</h6>
@@ -144,11 +175,16 @@ function DailyNutrition () {
                 </div>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div>
+                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('lunch')}}>
                             <img src={diner} alt='breakfast'/>
-                            <h5>Déjeuner</h5>
+                            <div className='meals_titles'>
+                                <h5>Déjeuner</h5>
+                                {consumes.lunch.map((el)=> 
+                                    <p className='medium_text'>{el.nameFood}{', '}</p>
+                                )}
+                            </div>
                         </div>
-                        <button className='button_add'><span>+</span></button>
+                        <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
                         <h6>{lunchMacros.calories}{' Kcal'}</h6>
@@ -156,11 +192,18 @@ function DailyNutrition () {
                 </div>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div>
+                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('dinner')}}>
                             <img src={lunch} alt='breakfast'/>
-                            <h5>Dinner</h5>
+                            <div className='meals_titles'>
+                                <h5>Dinner</h5>
+                                <div className='food_names'>
+                                {consumes.dinner.map((el, index)=> 
+                                    <p className='medium_text'>{el.nameFood}{', '}</p>
+                                )}
+                                </div>
+                            </div>
                         </div>
-                        <button className='button_add'><span>+</span></button>
+                        <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
                         <h6>{dinnertMacros.calories}{' Kcal'}</h6>
@@ -168,18 +211,22 @@ function DailyNutrition () {
                 </div>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div>
+                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('snacks')}}>
                             <img src={banana} alt='breakfast'/>
-                            <h5>Snacks</h5>
+                            <div className='meals_titles'>
+                                <h5>Snacks</h5>
+                                {consumes.snacks.map((el)=> 
+                                    <p className='medium_text'>{el.nameFood}{', '}</p>
+                                )}
+                            </div>
                         </div>
-                        <button className='button_add'><span>+</span></button>
+                        <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
                         <h6>{snacksMacros.calories}{' Kcal'}</h6>
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }

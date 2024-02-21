@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DELETE_FOOD, GET_FOOD_BY_NAME, LOAD_FOOD, SAVE_FOOD } from '../constant/actionsTypes';
+import {  GET_FOOD_BY_NAME, LOAD_FOOD } from '../constant/actionsTypes';
 
 export const getFood = (name) => async(dispatch)=> {
     dispatch(loadingFood());
@@ -19,29 +19,5 @@ export const getFood = (name) => async(dispatch)=> {
 export const loadingFood = () => {
     return({
         type: LOAD_FOOD,
-    })
-}
-
-export const saveFood = (meal, food) => {
-    let existingData = JSON.parse(localStorage.getItem('Meals')) || 
-    {
-        breakfast:[],
-        lunch: [],
-        dinner: [],
-        snacks: []
-    };
-    existingData[meal].push(food);
-    localStorage.setItem('Meals', JSON.stringify(existingData));
-    console.log(meal, food);
-    return({
-        type: SAVE_FOOD,
-    })
-}
-export const deleteFood = (Meals, index) => {
-    let existingData = JSON.parse(localStorage.getItem('Meals')); 
-    existingData.splice(index, 1);
-    localStorage.setItem(Meals, JSON.stringify(existingData));
-    return({
-        type: DELETE_FOOD,
     })
 }

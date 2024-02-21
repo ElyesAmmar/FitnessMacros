@@ -8,7 +8,7 @@
     
 }
 .user_info_content {
-    width: 48%;
+    width: 47%;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 0 8px #B0C4DE;
@@ -85,10 +85,10 @@
 
 @media screen and (max-width: 1300px) {
     .user_info_body {
-      width: 100%;
+    width: 100%;
     }
-  }
-@media screen and (max-width: 800px) {
+}
+@media screen and (max-width: 1000px) {
     .food_body {
       width: 100%;
     }

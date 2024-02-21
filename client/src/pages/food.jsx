@@ -100,9 +100,9 @@ function Food() {
                         </div>
                     }
                 </div>
+            </div>
         </div>
-      </div>
     );
-  }
-  
-  export default Food;
+}
+
+export default Food;

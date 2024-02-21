@@ -12,7 +12,7 @@ function  UserInfo() {
     
     const [editingUser, setEditingUser] = useState({});
     const [showModal, setShowModal] = useState(false);
-   
+
     const age = () => {
         let ageInMilliseconds = new Date() - new Date(user.date_of_birth);
         let ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);

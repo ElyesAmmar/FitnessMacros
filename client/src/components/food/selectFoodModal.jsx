@@ -6,19 +6,19 @@ import breakfast from '../../icons/cereal.svg';
 import banana from '../../icons/banana.svg';
 import lunch from '../../icons/lunch.svg';
 import diner from '../../icons/diner.svg';
-import { saveFood } from '../../JS/actions/food';
+import { saveFood } from '../../JS/actions/dailyNutrition';
 
 
-function SelectFood({selectedFood}) {
+function SelectFood({selectedFood, nameFood}) {
 
   const dispatch = useDispatch(); 
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log('selected food ', selectedFood);
+
   const savedFood = {
     servingSize: selectedFood.servingSize,
+    nameFood: nameFood,
     multiplier: parseFloat(selectedFood.multiplier),
     calories: parseFloat(selectedFood.calories),
     protein: parseFloat(selectedFood.protein),
@@ -40,21 +40,21 @@ function SelectFood({selectedFood}) {
           <div className='food_category'>
             <div className='food_category_section'>
               <div className='food_category_block'>
-                <img onClick={()=>handleMeals('breakfast')} src={breakfast}  alt=''/>
+                <img onClick={()=>{handleMeals('breakfast');handleClose()}} src={breakfast}  alt=''/>
                 <h6>Petit déjeuner</h6>
               </div>
               <div className='food_category_block'>
-                <img onClick={()=>handleMeals('lunch')} src={lunch}  alt=''/>
+                <img onClick={()=>{handleMeals('lunch');handleClose()}} src={lunch}  alt=''/>
                 <h6>Déjeuner</h6>
               </div>
             </div>
             <div className='food_category_section'>
               <div className='food_category_block'>
-                <img onClick={()=>handleMeals('dinner')} src={diner}  alt=''/>
+                <img onClick={()=>{handleMeals('dinner');handleClose()}} src={diner}  alt=''/>
                 <h6>Diner</h6>
               </div>
               <div className='food_category_block'>
-                <img onClick={()=>handleMeals('snacks')} src={banana}  alt=''/>
+                <img onClick={()=>{handleMeals('snacks');handleClose()}} src={banana}  alt=''/>
                 <h6>Snacks</h6>
               </div>
             </div>

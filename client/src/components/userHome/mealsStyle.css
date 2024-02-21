@@ -1,0 +1,51 @@
+.meals_body {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #EBECE4;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.meals_content {
+    /* margin: 20px auto 0px; */
+    width: 45%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 8px #B0C4DE;
+    padding: 15px;
+    margin: 10px;
+}
+@media screen and (max-width: 1200px) {
+    .meals_body {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .meals_body {
+        width: 100%;
+    }
+    .meals_content {
+        width: 90%;
+        flex-direction: column;
+    }
+    .food_section {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .meals_content {
+        padding: 10px;
+        margin: 5px;
+    }
+    .macronutrients_pourcentage {
+        margin: 5px 5px 15px 5px;
+    }
+    .macronutrients_pourcentage h5 {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .macronutrients_pourcentage h5 {
+        font-size: 12px;
+    }
+}
