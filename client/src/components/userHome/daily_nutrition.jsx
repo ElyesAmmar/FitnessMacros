@@ -20,67 +20,10 @@ function DailyNutrition () {
     const consumes = useSelector((state)=> state.dailyNutritionReducer.foodDaily); 
     useEffect(()=> {
         dispatch(getFoodDaily());
-    },[])
-    const breakfastMacros = consumes.breakfast.reduce((accumulator, element)=> {
-        accumulator.calories += element.calories;
-        accumulator.carbohydrates += element.carbohydrates;
-        accumulator.protein += element.protein;
-        accumulator.fat +=  element.fat;
-        return accumulator;
-    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
-
-    const lunchMacros = consumes.lunch.reduce((accumulator, element)=> {
-        accumulator.calories += element.calories;
-        accumulator.carbohydrates += element.carbohydrates;
-        accumulator.protein += element.protein;
-        accumulator.fat +=  element.fat;
-        return accumulator;
-    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
-
-    const dinnertMacros = consumes.dinner.reduce((accumulator, element)=> {
-        accumulator.calories += element.calories;
-        accumulator.carbohydrates += element.carbohydrates;
-        accumulator.protein += element.protein;
-        accumulator.fat +=  element.fat;
-        return accumulator;
-    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
-
-    const snacksMacros = consumes.snacks.reduce((accumulator, element)=> {
-        accumulator.calories += element.calories;
-        accumulator.carbohydrates += element.carbohydrates;
-        accumulator.protein += element.protein;
-        accumulator.fat +=  element.fat;
-        return accumulator;
-    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
-    
-    const totalMacros = Object.values(consumes).reduce((accumulator, element)=> {
-        element.forEach((el)=> {
-            accumulator.calories += el.calories;
-            accumulator.carbohydrates += el.carbohydrates;
-            accumulator.protein += el.protein;
-            accumulator.fat +=  el.fat;
-        });
-        return accumulator;
-    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
-
+    },[]);
     const addFood = () => {
         navigate('/daily-nutrition/food');
     }
-    const openMeal = (name) => {
-        if (name === 'breakfast') {
-            dispatch(getMealsData({name, nameFr: 'Petit déjeuner', total: breakfastMacros, foods: consumes.breakfast}))
-        }
-        if (name === 'lunch') {
-            dispatch(getMealsData({name, nameFr: 'Déjeuner', total: lunchMacros, foods: consumes.lunch}))
-        }
-        if (name === 'dinner') {
-            dispatch(getMealsData({name, nameFr: 'Diner', total: dinnertMacros, foods: consumes.dinner}))
-        }
-        if (name === 'snacks') {
-            dispatch(getMealsData({name, nameFr: 'Snacks', total: snacksMacros, foods: consumes.snacks}))
-        }
-    }
-    console.log(breakfastMacros, lunchMacros, consumes.lunch);
     return (
         <div className='daily_nutrition_body'>
             <div className='daily_nutrition_content'>
@@ -88,8 +31,8 @@ function DailyNutrition () {
                     <div className='calories_bar'>
                         <CircularProgressbar 
                             styles={buildStyles({textColor: "#228B22", pathColor: "#228B22"})} 
-                            value={totalMacros.calories/dailyNutrition.calories*100} 
-                            text={dailyNutrition.calories-totalMacros.calories}
+                            value={consumes.totalMacros.calories/dailyNutrition.calories*100} 
+                            text={dailyNutrition.calories-consumes.totalMacros.calories}
                         /><br/>
                         <h2 style={{textAlign: 'center'}}>KCAL</h2>
                     </div>
@@ -102,12 +45,12 @@ function DailyNutrition () {
                                 <ProgressBar 
                                     className='progress_bar' 
                                     variant="primary" 
-                                    now={Math.round(totalMacros.carbohydrates)/dailyNutrition.carbohydrates*100} 
+                                    now={Math.round(consumes.totalMacros.carbohydrates)/dailyNutrition.carbohydrates*100} 
                                 />
                             </div>
                             <div className='nutritional_values_value'>
                                 <p className='nutritional_values'>
-                                    {Math.round(totalMacros.carbohydrates)}g/{dailyNutrition.carbohydrates}g 
+                                    {Math.round(consumes.totalMacros.carbohydrates)}g/{dailyNutrition.carbohydrates}g 
                                 </p>
                                 <p className='nutritional_values_range'>
                                     Range: {Math.round(dailyNutrition.carbohydrates * 0.8)}g - {Math.round(dailyNutrition.carbohydrates * 1.2)}g
@@ -122,11 +65,11 @@ function DailyNutrition () {
                                 <ProgressBar 
                                     className='progress_bar' 
                                     variant="warning" 
-                                    now={Math.round(totalMacros.protein)/dailyNutrition.protein*100} 
+                                    now={Math.round(consumes.totalMacros.protein)/dailyNutrition.protein*100} 
                                 />
                             </div>
                             <div className='nutritional_values_value'>
-                                <p className='nutritional_values'>{Math.round(totalMacros.protein)}g/{dailyNutrition.protein}g</p> 
+                                <p className='nutritional_values'>{Math.round(consumes.totalMacros.protein)}g/{dailyNutrition.protein}g</p> 
                                 <p className='nutritional_values_range'>
                                     Range: {Math.round(dailyNutrition.protein * 0.8)}g - {Math.round(dailyNutrition.protein * 1.2)}g
                                 </p>
@@ -141,11 +84,11 @@ function DailyNutrition () {
                                 <ProgressBar 
                                     className='progress_bar' 
                                     variant="danger" 
-                                    now={Math.round(totalMacros.fat)/dailyNutrition.fat*100} 
+                                    now={Math.round(consumes.totalMacros.fat)/dailyNutrition.fat*100} 
                                 />
                             </div>
                             <div className='nutritional_values_value'>
-                                <p className='nutritional_values'>{Math.round(totalMacros.fat)}g/{dailyNutrition.fat}g</p> 
+                                <p className='nutritional_values'>{Math.round(consumes.totalMacros.fat)}g/{dailyNutrition.fat}g</p> 
                                 <p className='nutritional_values_range'>
                                     Range: {Math.round(dailyNutrition.fat * 0.8)}g - {Math.round(dailyNutrition.fat * 1.2)}g
                                 </p>
@@ -158,11 +101,11 @@ function DailyNutrition () {
             <div className='daily_meals'>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('breakfast')}}>
+                        <div onClick={()=> {navigate(`/daily-nutrition/meals/${'breakfast'}`)}}>
                             <img src={breakfast} alt='breakfast'/>
                             <div className='meals_titles'>
                                 <h5>Petit Déjeuner</h5>
-                                {consumes.breakfast.map((el)=> 
+                                {consumes.foods.breakfast.map((el)=> 
                                     <p className='medium_text'>{el.nameFood}</p>
                                 )}
                             </div>
@@ -170,16 +113,16 @@ function DailyNutrition () {
                         <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
-                        <h6>{breakfastMacros.calories}{' Kcal'}</h6>
+                        <h6>{consumes.breakfast.calories}{' Kcal'}</h6>
                     </div>
                 </div>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('lunch')}}>
+                        <div onClick={()=> {navigate(`/daily-nutrition/meals/${'lunch'}`)}}>
                             <img src={diner} alt='breakfast'/>
                             <div className='meals_titles'>
                                 <h5>Déjeuner</h5>
-                                {consumes.lunch.map((el)=> 
+                                {consumes.foods.lunch.map((el)=> 
                                     <p className='medium_text'>{el.nameFood}{', '}</p>
                                 )}
                             </div>
@@ -187,17 +130,17 @@ function DailyNutrition () {
                         <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
-                        <h6>{lunchMacros.calories}{' Kcal'}</h6>
+                        <h6>{consumes.lunch.calories}{' Kcal'}</h6>
                     </div>
                 </div>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('dinner')}}>
+                        <div onClick={()=> {navigate(`/daily-nutrition/meals/${'dinner'}`)}}>
                             <img src={lunch} alt='breakfast'/>
                             <div className='meals_titles'>
                                 <h5>Dinner</h5>
                                 <div className='food_names'>
-                                {consumes.dinner.map((el, index)=> 
+                                {consumes.foods.dinner.map((el, index)=> 
                                     <p className='medium_text'>{el.nameFood}{', '}</p>
                                 )}
                                 </div>
@@ -206,16 +149,16 @@ function DailyNutrition () {
                         <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
-                        <h6>{dinnertMacros.calories}{' Kcal'}</h6>
+                        <h6>{consumes.dinner.calories}{' Kcal'}</h6>
                     </div>
                 </div>
                 <div className='meals_sections'>
                     <div className='meals_sections_1'>
-                        <div onClick={()=> {navigate('/daily-nutrition/meals'); openMeal('snacks')}}>
+                        <div onClick={()=> {navigate(`/daily-nutrition/meals/${'snacks'}`)}}>
                             <img src={banana} alt='breakfast'/>
                             <div className='meals_titles'>
                                 <h5>Snacks</h5>
-                                {consumes.snacks.map((el)=> 
+                                {consumes.foods.snacks.map((el)=> 
                                     <p className='medium_text'>{el.nameFood}{', '}</p>
                                 )}
                             </div>
@@ -223,7 +166,7 @@ function DailyNutrition () {
                         <button className='button_add' onClick={addFood}></button>
                     </div>
                     <div className='meals_sections_2'>
-                        <h6>{snacksMacros.calories}{' Kcal'}</h6>
+                        <h6>{consumes.snacks.calories}{' Kcal'}</h6>
                     </div>
                 </div>
             </div>

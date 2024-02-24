@@ -11,6 +11,8 @@ import DailyNutrition from './components/userHome/daily_nutrition';
 import Food from './pages/food';
 import UserInfo from './components/userHome/InformationUser';
 import Meals from './components/userHome/meals';
+import { getFoodDaily } from './JS/actions/dailyNutrition';
+
 
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
       snacks: []
     }));
   }
+    dispatch(getFoodDaily());
     dispatch(getUser());
   },[]);
 
@@ -43,7 +46,7 @@ function App() {
           <Route path='/' element={isAuth? <UserHome />  : <Home />}>
             <Route path='/daily-nutrition' element={isAuth? <DailyNutrition /> : <Navigate to='/' />}/>
             <Route path='/daily-nutrition/food' element={<Food />} />
-            <Route path='/daily-nutrition/meals' element={<Meals />} />
+            <Route path='/daily-nutrition/meals/:data' element={<Meals />} />
             <Route path='/user-information' element= {isAuth? <UserInfo /> : <Navigate to='/' />} />
           </Route>
           

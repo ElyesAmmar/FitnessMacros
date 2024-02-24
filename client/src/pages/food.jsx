@@ -15,8 +15,6 @@ function Food() {
     const [inputValue, setInputValue] = useState('');
     // const [portion, setPortion] = useState('');
     const [sum, setSum] = useState(0);
-   
-    console.log(nutrients);
     
     const handleInput = (e) => {
         e.preventDefault();

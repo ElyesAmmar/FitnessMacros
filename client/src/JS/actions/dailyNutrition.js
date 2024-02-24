@@ -46,10 +46,53 @@ export const saveFood = (meal, food) => {
 // get meals from the local storage
 export const getFoodDaily = () => {
     const consumes = JSON.parse(localStorage.getItem('Meals')); 
+
+    const breakfast = consumes.breakfast.reduce((accumulator, element)=> {
+        accumulator.calories += element.calories;
+        accumulator.carbohydrates += element.carbohydrates;
+        accumulator.protein += element.protein;
+        accumulator.fat +=  element.fat;
+        return accumulator;
+    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
+
+    const lunch = consumes.lunch.reduce((accumulator, element)=> {
+        accumulator.calories += element.calories;
+        accumulator.carbohydrates += element.carbohydrates;
+        accumulator.protein += element.protein;
+        accumulator.fat +=  element.fat;
+        return accumulator;
+    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
+
+    const dinner = consumes.dinner.reduce((accumulator, element)=> {
+        accumulator.calories += element.calories;
+        accumulator.carbohydrates += element.carbohydrates;
+        accumulator.protein += element.protein;
+        accumulator.fat +=  element.fat;
+        return accumulator;
+    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
+
+    const snacks = consumes.snacks.reduce((accumulator, element)=> {
+        accumulator.calories += element.calories;
+        accumulator.carbohydrates += element.carbohydrates;
+        accumulator.protein += element.protein;
+        accumulator.fat +=  element.fat;
+        return accumulator;
+    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
+    
+    const totalMacros = Object.values(consumes).reduce((accumulator, element)=> {
+        element.forEach((el)=> {
+            accumulator.calories += el.calories;
+            accumulator.carbohydrates += el.carbohydrates;
+            accumulator.protein += el.protein;
+            accumulator.fat +=  el.fat;
+        });
+        return accumulator;
+    }, { calories: 0, carbohydrates: 0, protein: 0, fat: 0 });
+
     console.log('consumes',consumes);
     return ({
         type: GET_FOOD_DAILY,
-        payload: consumes
+        payload: {breakfast, lunch, dinner, snacks, totalMacros, foods: consumes}
     })
 }
 
