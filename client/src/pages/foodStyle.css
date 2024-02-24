@@ -2,9 +2,13 @@
     width: 1200px;
     margin: 0 auto;
     background-color: #EBECE4;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    
+}
+.food_main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .food_content {
     /* margin: 20px auto 0px; */

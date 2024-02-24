@@ -2,6 +2,9 @@
     width: 1200px;
     margin: 0 auto;
     background-color: #EBECE4;
+}
+.meals_main {
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -14,6 +17,20 @@
     box-shadow: 0 0 8px #B0C4DE;
     padding: 15px;
     margin: 10px;
+}
+.icon_delete {
+    font-size: 30px;
+    margin: 4px 10px;
+    border: none;
+    background-color: white;
+    color: gray;
+}
+.element_food:hover:hover .icon_delete {
+    background-color: #E3E3E3;
+}
+.previous_button {
+    margin-top: 10px;
+    margin-left: 10px;
 }
 @media screen and (max-width: 1200px) {
     .meals_body {

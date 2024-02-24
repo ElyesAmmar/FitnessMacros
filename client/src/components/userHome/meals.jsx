@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './mealsStyle.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { deleteFood } from "../../JS/actions/dailyNutrition";
-import { getFoodDaily } from '../../JS/actions/dailyNutrition';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Meals() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const mealsCategorie = useParams();
     const mealsFromLocalStorage = useSelector((state)=> state.dailyNutritionReducer.foodDaily);
     const meals = () => {
@@ -36,6 +35,8 @@ function Meals() {
     console.log('meals from meals',  meals());
     return (
         <div className='meals_body'>
+            <button className="previous_button" onClick={()=> navigate('/daily-nutrition')}>{'<--'}</button>
+            <div className="meals_main">
             <div className="meals_content">
                 <div className='nutrition_fact_title'>
                     <h3>{meals()? meals().nameFr : ''}</h3>
@@ -102,13 +103,14 @@ function Meals() {
                                     <p style={{fontSize: '13px', margin:'0'}}>{el.multiplier}{' x '}{`(${el.servingSize})`}</p>
                                 </div>
                                 <div>
-                                    <button onClick={()=>handleDelete(meals().name, index)}>x</button>
+                                    <button className="icon_delete" onClick={()=>handleDelete(meals().name, index)}>x</button>
                                 </div>
                             </div>
                         ) : ''}
                         
                     
                 </div>
+            </div>
             </div>
         </div>
     );

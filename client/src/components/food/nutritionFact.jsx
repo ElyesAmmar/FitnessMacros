@@ -1,5 +1,5 @@
 import './nutritionFactStyle.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { useSelector } from  'react-redux';
 import SelectFood from './selectFoodModal';
@@ -8,9 +8,12 @@ function NutritionFact({sum,nutrients}) {
     
     const isAuth = useSelector((state)=> state.userReducer.isAuth);
     const [showPortionsList, setShowPortionsList] = useState(false);
-    const [unitMeasure, setUnitMeasure] = useState(nutrients.serving_size_fr);
+    const [unitMeasure, setUnitMeasure] = useState({});
     const [multiplier, setMultiplier] = useState(1);
-    
+    useEffect(()=> {
+        setUnitMeasure(nutrients.serving_size_fr);
+        setMultiplier(1);
+    },[nutrients])
     const macrosNutritionDefault = {
         servingSize : nutrients.serving_size_fr,
         multiplier: multiplier,
