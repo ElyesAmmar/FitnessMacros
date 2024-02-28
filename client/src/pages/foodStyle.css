@@ -1,7 +1,7 @@
 .food_body {
     width: 1200px;
     margin: 0 auto;
-    background-color: #EBECE4;
+    /* background-color: #EBECE4; */
     
 }
 .food_main {
@@ -10,26 +10,62 @@
   flex-wrap: wrap;
   width: 100%;
 }
+.food_header {
+  background-color: green;
+  padding-bottom: 30px;
+}
+.input_header {
+  margin: 10px auto;
+  width: 70%;
+}
 .food_content {
     /* margin: 20px auto 0px; */
-    width: 45%;
+    width: 48%;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 0 8px #B0C4DE;
     padding: 15px;
     margin: 10px;
 }
+.header_bar_list  {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+.header_bar_list li {
+  display: block;
+  padding: 8px 20px;
+  font-weight: 600;
+  color: gray;
+  font-size: 17px;
+}
+.header_bar_list li:focus {
+  border-bottom: 1.5px solid #228B22;
+  color: #228B22;
+}
+.header_bar_list li:hover{
+  background-color: #E3E3E3;
+  cursor: pointer;
+}
 
+/* .header_bar_list li:last-child {
+  margin-left: 10px;
+} */
 /* search food block */
 
-.dropdown_container {
-  padding: 10px;
-}
+/* .dropdown_container {
+  width: 70%;
+} */
 .list_foods {
   display: block;
   overflow-y: auto;
-  width: 100%;
+  width: 70%;
   height: 500px;
+  background-color: white;
+  margin: 2px auto;
 }
 .element_food {
   padding: 5px 0px 5px 15px;
@@ -78,15 +114,18 @@
     }
   } */
 
- @media screen and (max-width: 900px) {
+ @media screen and (max-width: 1000px) {
     .food_body {
       width: 100%;
     }
     .food_content {
-      width: 90%;
+      width: 95%;
       flex-direction: column;
     }
     .food_section {
       width: 100%;
+    }
+    .list_foods {
+      width: 95%
     }
 }

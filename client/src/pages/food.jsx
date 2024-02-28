@@ -45,18 +45,11 @@ function Food() {
 
     return (
         <div className='food_body'>
-            <button className="previous_button" onClick={()=> navigate('/daily-nutrition')}>{'<--'} Mon acceuil</button>
-        
-            <div className='food_main'>
-                {Object.values(nutrients).length > 0 &&
-                    <div className="food_content">
-                        <NutritionFact nutrients={nutrients} sum={sum} /> 
-                    </div>
-                }
-            
-            <div className="food_content">
+            <div className='food_header'>
+                <button className="previous_button" onClick={()=> navigate('/daily-nutrition')}>{'<--'} Mon acceuil</button>
+                <div className='input_header'>
                     <div>
-                        <h4>Infos nutritionnelles de l'aliment</h4>
+                        <h4>Tous les Aliments</h4>
                     </div>
                     <div className='dropdown_container'>
                         <div className='search_input'>
@@ -79,33 +72,55 @@ function Food() {
                             </div>
                             }
                         </div>
-                        {showList &&
-                            <div className='list_foods'>  
-                                {food
-                                .sort((a,b)=> a.name_fr.length - b.name_fr.length)
-                                .map((el)=>
-                                    <div key={el.id} className='element_food' onClick={()=>{selectFood(el)}} >
-                                        <div>
-                                            <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
-                                            <p className='medium_text'>Calories: {el.calories} kcal</p>
-                                            <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
-                                        </div>
-                                        <div className='favoris_icon'>
-                                            <input
-                                                value="favorite-button"
-                                                name="favorite-checkbox"
-                                                id="favorite"
-                                                checked="checked"
-                                                type="checkbox"
-                                            />
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        }
+                        
                     </div>
                 </div>
             </div>
+            {showList &&
+                <div className='list_foods'>  
+                    {food
+                        .sort((a,b)=> a.name_fr.length - b.name_fr.length)
+                        .map((el)=>
+                            <div key={el.id} className='element_food' onClick={()=>{selectFood(el)}} >
+                                <div>
+                                    <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
+                                    <p className='medium_text'>Calories: {el.calories} kcal</p>
+                                    <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
+                                </div>
+                                <div className='favoris_icon'>
+                                    <input
+                                        value="favorite-button"
+                                        name="favorite-checkbox"
+                                        id="favorite"
+                                        checked="checked"
+                                        type="checkbox"
+                                    />
+                                </div>
+                            </div>
+                    )}
+                </div>
+            }
+            {!showList && 
+                <div className='food_main'>
+                    {Object.values(nutrients).length > 0 &&
+                        <div className="food_content">
+                            <NutritionFact nutrients={nutrients} sum={sum} /> 
+                        </div>
+                    }
+                    
+                    <div className="food_content" style={!Object.values(nutrients).length? {width: '95%'} : {}}>
+                        <ul className='header_bar_list'>
+                            <li>Recent choice</li>
+                            <li>Favoris</li>
+                            <li>Most searched</li>
+                        </ul>
+                        
+                        <div className='list_foods'>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     );
 }

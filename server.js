@@ -5,6 +5,7 @@ const database = require("./config/db");
 const userRoute = require('./routes/userRoute');
 const macrosRoute = require('./routes/daily_nutritionRoute');
 const foodRoute = require('./routes/foodRoute');
+const favoriteRoute = require('./routes/favorite_foodRoute');
 
 const PORT =  process.env.PORT || 7011;
 const App = express();
@@ -16,7 +17,7 @@ App.use((req, res, next) => {
     // res.header('Access-Control-Allow-Methods', 'http://localhost:3000');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-auth-token');
     next();
-  });
+});
 
 
 const connectDB = async() =>{
@@ -31,6 +32,7 @@ connectDB();
 App.use('/api/users', userRoute );
 App.use('/api/daily_nutrition', macrosRoute );
 App.use('/api/food', foodRoute);
+App.use('/api/favorite_food', favoriteRoute);
 
 App.listen(PORT, (err)=>{
     if (err) {
