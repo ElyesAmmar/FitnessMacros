@@ -15,3 +15,5 @@ export const LOAD_FOOD = "LOAD_FOOD";
 export const SAVE_FOOD = "SAVE_FOOD";
 export const GET_FOOD_DAILY = "GET_FOOD_DAILY";
 export const DELETE_FOOD = "DELETE_FOOD";
+export const POST_FAVORITE_FOOD = 'POST_FAVORITE_FOOD';
+export const GET_FAVORITE_FOOD = 'GET_FAVORITE_FOOD';

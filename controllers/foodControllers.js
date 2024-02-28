@@ -9,7 +9,6 @@ exports.post = async(req, res) => {
         .pipe(csv())
         .on('data', async(data) => {
             try {
-
                 if (data.protein === "-") {
                     data.protein = 0;
                 } else {
@@ -25,7 +24,6 @@ exports.post = async(req, res) => {
                 } else {
                     data.fat =  parseFloat(data.fat, 10);
                 }
-
                 if (data.protein_100 === "-") {
                     data.protein_100 = 0;
                 } else {
@@ -65,7 +63,6 @@ exports.post = async(req, res) => {
 
 exports.findByName = async(req, res) => {
     try {
-        
         let  name = req.query.name;
         let  names = name.split(' ');
         let whereCondition = names.map((word)=>  ({[Op.substring]: word}));
@@ -79,10 +76,20 @@ exports.findByName = async(req, res) => {
         }
         return res.status(200).send({msg: 'find foods successfully', response: data})
     } catch (error) {
-        return res.status(500).send({msg: 'Error on the server.'})
+        return res.status(500).send({msg: 'Error on the server.'});
     }
 }
-
+exports.findById = async(req, res) => {
+    try {
+        let id = req.params.id
+        console.log(id);
+        let food = await Food.findByPk(id);
+        console.log(food);
+        return res.status(200).send({msg: 'find foods successfully', response: food});
+    } catch (error) {
+        return res.status(500).send({msg: 'Error on the server.'});
+    }
+}
 exports.extractAll = async(req, res)=>{
     try {
         const data = await Food.findAll();

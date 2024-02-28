@@ -20,3 +20,13 @@ exports.getFavorite = async(req, res) => {
         return res.status(500).send({ msg: 'Error on the server.'});
     }
 }
+exports.deleteFavorite = async(req, res) => {
+    try {
+        let id = req.params.id
+        let favorite = await Favorite_Food.destroy({where: {id: id}});
+        return res.status(200).send({msg: 'favorite food removed successfully'});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ msg: 'Error on the server.'});
+    }
+}

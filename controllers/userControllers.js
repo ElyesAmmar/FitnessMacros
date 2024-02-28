@@ -25,7 +25,7 @@ exports.register = async(req, res) =>{
         // sign user 
         const   payload = {
             id: user.id
-           }
+            }
         const token = await jwt.sign(payload, process.env.secretKey)
         return res.status(200).send({ msg: "register user successfully", user , token})
         
@@ -83,7 +83,7 @@ exports.update = async(req, res) => {
         }
         let result = await User.update({...request}, {
             where: {
-              id: id
+                id: id
             }
         });
         const user = await User.findByPk(id);

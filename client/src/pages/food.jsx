@@ -1,23 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import './foodStyle.css';
 import 'react-circular-progressbar/dist/styles.css';
 import Spinner from 'react-bootstrap/Spinner';
-import { getFood } from '../JS/actions/food';
+import { getFavoriteFood, getFood, postFavoriteFood } from '../JS/actions/food';
 import NutritionFact from '../components/food/nutritionFact';
+import HeartIcon from '../components/favoriteIcon';
+import FavoriteFood from '../components/food/favoriteFood';
 
 function Food() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const food = useSelector((state)=> state.foodReducer.food);
     const isLoading = useSelector((state)=> state.foodReducer.isLoading);
+    
+    const user = useSelector((state)=> state.userReducer.user);
     const [showList, setShowList] = useState(false);
     const [nutrients, setNutrients] = useState({});
     const [inputValue, setInputValue] = useState('');
-    // const [portion, setPortion] = useState('');
     const [sum, setSum] = useState(0);
-    
+
+    useEffect(()=> {
+        dispatch(getFavoriteFood(user.id));
+    },[]);
+
     const handleInput = (e) => {
         e.preventDefault();
         setShowList(true);
@@ -41,6 +48,9 @@ function Food() {
         setShowList(false);
         setNutrients(food); 
         setSum(food.protein + food.carbohydrates + food.fat);
+    }
+    const setFoodFavorite = (foodId) => {
+        dispatch(postFavoriteFood(user.id, foodId))
     }
 
     return (
@@ -81,20 +91,14 @@ function Food() {
                     {food
                         .sort((a,b)=> a.name_fr.length - b.name_fr.length)
                         .map((el)=>
-                            <div key={el.id} className='element_food' onClick={()=>{selectFood(el)}} >
-                                <div>
+                            <div key={el.id} className='element_food'  >
+                                <div onClick={()=>{selectFood(el)}}>
                                     <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
                                     <p className='medium_text'>Calories: {el.calories} kcal</p>
                                     <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
                                 </div>
-                                <div className='favoris_icon'>
-                                    <input
-                                        value="favorite-button"
-                                        name="favorite-checkbox"
-                                        id="favorite"
-                                        checked="checked"
-                                        type="checkbox"
-                                    />
+                                <div className='favoris_icon' onClick={()=> setFoodFavorite(el.id)}>
+                                    <HeartIcon strokeColor={'#8B0000'} fillColor={'white'} />
                                 </div>
                             </div>
                     )}
@@ -114,6 +118,7 @@ function Food() {
                             <li>Favoris</li>
                             <li>Most searched</li>
                         </ul>
+                        <FavoriteFood />
                         
                         <div className='list_foods'>
                             
