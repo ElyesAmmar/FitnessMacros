@@ -24,7 +24,7 @@ function UserHome() {
           <li><Link to='/user-information' onClick={()=> setFocusedLink(3)} autoFocus={focusedLink === 3}>Mes informations</Link></li>
         </ul>
       </nav>
-       <Outlet />
+      <Outlet />
     </div>
   );
 }

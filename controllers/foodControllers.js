@@ -39,7 +39,6 @@ exports.post = async(req, res) => {
                 } else {
                     data.fat_100 =  parseFloat(data.fat_100, 10);
                 }
-
                 data.calories =  parseInt(data.calories, 10);
                 data.calories_100 =  parseInt(data.calories_100, 10);
                 
@@ -82,9 +81,7 @@ exports.findByName = async(req, res) => {
 exports.findById = async(req, res) => {
     try {
         let id = req.params.id
-        console.log(id);
         let food = await Food.findByPk(id);
-        console.log(food);
         return res.status(200).send({msg: 'find foods successfully', response: food});
     } catch (error) {
         return res.status(500).send({msg: 'Error on the server.'});

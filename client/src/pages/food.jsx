@@ -4,27 +4,29 @@ import { useNavigate } from "react-router-dom";
 import './foodStyle.css';
 import 'react-circular-progressbar/dist/styles.css';
 import Spinner from 'react-bootstrap/Spinner';
-import { getFavoriteFood, getFood, postFavoriteFood } from '../JS/actions/food';
+import { deleteFavoriteFood, getFavoriteFood, getFood, postFavoriteFood } from '../JS/actions/food';
 import NutritionFact from '../components/food/nutritionFact';
 import HeartIcon from '../components/favoriteIcon';
-import FavoriteFood from '../components/food/favoriteFood';
 
 function Food() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const food = useSelector((state)=> state.foodReducer.food);
     const isLoading = useSelector((state)=> state.foodReducer.isLoading);
-    
+    const favoriteFood = useSelector((state)=> state.foodReducer.favoriteFood);
     const user = useSelector((state)=> state.userReducer.user);
     const [showList, setShowList] = useState(false);
     const [nutrients, setNutrients] = useState({});
     const [inputValue, setInputValue] = useState('');
     const [sum, setSum] = useState(0);
+    const [checked, setChecked] = useState(false);
 
     useEffect(()=> {
         dispatch(getFavoriteFood(user.id));
-    },[]);
-
+    },[user]);
+    
+    
+    console.log(favoriteFood);
     const handleInput = (e) => {
         e.preventDefault();
         setShowList(true);
@@ -50,9 +52,17 @@ function Food() {
         setSum(food.protein + food.carbohydrates + food.fat);
     }
     const setFoodFavorite = (foodId) => {
-        dispatch(postFavoriteFood(user.id, foodId))
+        const idArray = favoriteFood.map((el)=> el.id);
+        if (idArray.includes(foodId)) {
+            dispatch(deleteFavoriteFood(user.id, foodId));
+        } else {
+            dispatch(postFavoriteFood(user.id, foodId));
+        }
     }
-
+    const checkFavorite = (food) => {
+        const idArray = favoriteFood.map((el)=> el.id);
+        return idArray.includes(food);
+    }
     return (
         <div className='food_body'>
             <div className='food_header'>
@@ -91,14 +101,17 @@ function Food() {
                     {food
                         .sort((a,b)=> a.name_fr.length - b.name_fr.length)
                         .map((el)=>
-                            <div key={el.id} className='element_food'  >
+                            <div key={el.id} className='element_food'>
+                                {
+                                    
+                                }
                                 <div onClick={()=>{selectFood(el)}}>
                                     <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
                                     <p className='medium_text'>Calories: {el.calories} kcal</p>
                                     <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
                                 </div>
                                 <div className='favoris_icon' onClick={()=> setFoodFavorite(el.id)}>
-                                    <HeartIcon strokeColor={'#8B0000'} fillColor={'white'} />
+                                    <HeartIcon strokeColor={'#8B0000'} fillColor={checkFavorite(el.id)? '#8B0000' : 'white' } />
                                 </div>
                             </div>
                     )}
@@ -118,7 +131,18 @@ function Food() {
                             <li>Favoris</li>
                             <li>Most searched</li>
                         </ul>
-                        <FavoriteFood />
+                        {favoriteFood.map((el)=> 
+                            <div key={el.id} className='element_food'>
+                                <div onClick={()=>{selectFood(el)}}>
+                                    <h6 style={{marginBottom:'3px'}}>{el.name_fr}</h6>
+                                    <p className='medium_text'>Calories: {el.calories} kcal</p>
+                                    <p style={{fontSize: '13px', margin:'0'}}>Portion: {el.serving_size_fr}</p>
+                                </div>
+                                <div className='favoris_icon' onClick={()=> setFoodFavorite(el.id)}>
+                                    <HeartIcon strokeColor={'#8B0000'} fillColor={checkFavorite(el.id)? '#8B0000' : 'white' } />
+                                </div>
+                            </div>
+                        )}
                         
                         <div className='list_foods'>
                             

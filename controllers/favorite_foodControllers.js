@@ -23,7 +23,8 @@ exports.getFavorite = async(req, res) => {
 exports.deleteFavorite = async(req, res) => {
     try {
         let id = req.params.id
-        let favorite = await Favorite_Food.destroy({where: {id: id}});
+        let favorite = await Favorite_Food.destroy({where: {food_id: id}});
+        console.log(favorite);
         return res.status(200).send({msg: 'favorite food removed successfully'});
     } catch (error) {
         console.log(error);
