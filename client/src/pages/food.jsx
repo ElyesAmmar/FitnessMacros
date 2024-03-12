@@ -124,13 +124,13 @@ function Food() {
                             <NutritionFact nutrients={nutrients} sum={sum} /> 
                         </div>
                     }
-                    
+                    {!Object.values(nutrients).length > 0 &&
+                    <h3 className='favorite_title'>Favoris</h3>
+                    }
                     <div className="food_content" style={!Object.values(nutrients).length? {width: '95%'} : {}}>
-                        <ul className='header_bar_list'>
-                            <li>Recent choice</li>
-                            <li>Favoris</li>
-                            <li>Most searched</li>
-                        </ul>
+                        {Object.values(nutrients).length > 0 &&
+                        <h3 className='favorite_title' style={{textAlign: 'center', margin: '15px'}}>Favoris</h3>
+                        }
                         {favoriteFood.map((el)=> 
                             <div key={el.id} className='element_food'>
                                 <div onClick={()=>{selectFood(el)}}>
@@ -143,10 +143,6 @@ function Food() {
                                 </div>
                             </div>
                         )}
-                        
-                        <div className='list_foods'>
-                            
-                        </div>
                     </div>
                 </div>
             }

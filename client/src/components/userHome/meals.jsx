@@ -35,12 +35,15 @@ function Meals() {
     console.log('meals from meals',  meals());
     return (
         <div className='meals_body'>
-            <button className="previous_button" onClick={()=> navigate('/daily-nutrition')}>{'<--'}</button>
-            <div className="meals_main">
-            <div className="meals_content">
+            <div className="meals_header">
+                <button className="previous_button" onClick={()=> navigate('/daily-nutrition')}>{'<--'}</button>
                 <div className='nutrition_fact_title'>
                     <h3>{meals()? meals().nameFr : ''}</h3>
                 </div>
+            </div>
+            <div className="meals_main">
+            <div className="meals_content">
+                
                 <div className='nutrition_fact'>
                     <h3 style={{textAlign: 'center'}}>{meals()? meals().total.calories : ''}{' kcal'}</h3>
                     <div className="macronutrients_pourcentage">
@@ -94,7 +97,7 @@ function Meals() {
                 </div>
             </div>
             <div className="meals_content">
-                <div className='list_foods'>  
+                <div className='list_foods' style={{backgroundColor: 'white'}}>  
                         {meals()? meals().foods.map((el, index)=>
                             <div className='element_food'>
                                 <div>

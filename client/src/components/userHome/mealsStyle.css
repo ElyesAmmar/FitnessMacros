@@ -3,6 +3,14 @@
     margin: 0 auto;
     background-color: #EBECE4;
 }
+.meals_header {
+    display: flex;
+}
+.nutrition_fact_title {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .meals_main {
     width: 100%;
     display: flex;
@@ -31,6 +39,16 @@
 .previous_button {
     margin-top: 10px;
     margin-left: 10px;
+    font-weight: 500;
+    padding: 5px 10px;
+    color: #228B22;
+    background-color: white;
+    border: 1px solid #228B22;
+    border-radius: 10px;
+}
+.previous_button:hover {
+    background-color: #228B22;
+    color: white;
 }
 @media screen and (max-width: 1200px) {
     .meals_body {
